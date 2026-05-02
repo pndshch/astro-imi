@@ -4,424 +4,126 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>西洋占星術の意味 | Pinda Lab</title>
-<meta name="description" content="12星座・10惑星・12ハウス・5アスペクトの意味をすぐ引けるリファレンス。プロの占い師向け。">
-<meta property="og:title" content="西洋占星術の意味">
-<meta property="og:description" content="プロ向け 西洋占星術 即時リファレンス">
+<meta property="og:title" content="Western Astrology Reference">
 <meta property="og:url" content="https://pndshch.github.io/astro-imi/">
-<meta name="twitter:card" content="summary">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-body {
-    background:
-        radial-gradient(2px 2px at 12% 18%, rgba(255,255,255,0.5), transparent 50%),
-        radial-gradient(1px 1px at 38% 70%, rgba(255,255,255,0.4), transparent 50%),
-        radial-gradient(1.5px 1.5px at 64% 22%, rgba(255,255,255,0.5), transparent 50%),
-        radial-gradient(1px 1px at 82% 50%, rgba(255,255,255,0.4), transparent 50%),
-        radial-gradient(1.5px 1.5px at 25% 88%, rgba(255,255,255,0.4), transparent 50%),
-        radial-gradient(1px 1px at 92% 78%, rgba(255,255,255,0.4), transparent 50%),
-        radial-gradient(ellipse at top, #1a1849 0%, #0a0a2a 60%, #000 100%);
-    background-attachment: fixed;
-    color: #e6e3f0;
-    font-family: 'Hiragino Mincho ProN', 'Noto Serif JP', 'Yu Mincho', serif;
-    min-height: 100vh;
-    padding: 18px 14px 40px;
-    user-select: none;
-}
+body { background: radial-gradient(2px 2px at 12% 18%, rgba(255,255,255,0.5), transparent 50%), radial-gradient(1px 1px at 38% 70%, rgba(255,255,255,0.4), transparent 50%), radial-gradient(1.5px 1.5px at 64% 22%, rgba(255,255,255,0.5), transparent 50%), radial-gradient(1px 1px at 82% 50%, rgba(255,255,255,0.4), transparent 50%), radial-gradient(1.5px 1.5px at 25% 88%, rgba(255,255,255,0.4), transparent 50%), radial-gradient(1px 1px at 92% 78%, rgba(255,255,255,0.4), transparent 50%), radial-gradient(ellipse at top, #1a1849 0%, #0a0a2a 60%, #000 100%); background-attachment: fixed; color: #e6e3f0; font-family: 'Hiragino Mincho ProN', 'Noto Serif JP', 'Yu Mincho', serif; min-height: 100vh; padding: 18px 14px 40px; user-select: none; }
 .container { max-width: 760px; margin: 0 auto; }
-
-.topbar {
-    display: flex; justify-content: space-between;
-    color: #a78bfa; font-size: 12px; margin-bottom: 12px;
-}
+.lang-switch { position: fixed; top: 12px; right: 12px; display: flex; gap: 2px; background: rgba(22,27,34,0.9); border: 1px solid rgba(167,139,250,0.3); border-radius: 8px; padding: 3px; z-index: 1000; }
+.lang-btn { background: transparent; border: none; color: #a78bfa; font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 5px; cursor: pointer; font-family: system-ui, sans-serif; }
+.lang-btn.active { background: #fbbf24; color: #1a1849; }
+.topbar { display: flex; justify-content: space-between; color: #a78bfa; font-size: 12px; margin-bottom: 12px; }
 .topbar a { color: #a78bfa; text-decoration: none; font-family: system-ui, sans-serif; }
-
-.brand {
-    text-align: center;
-    margin-bottom: 16px;
-}
-.brand-title {
-    font-size: 30px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #fbbf24, #fde047, #fbbf24);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: 3px;
-}
+.brand { text-align: center; margin-bottom: 16px; }
+.brand-title { font-size: 30px; font-weight: 700; background: linear-gradient(135deg, #fbbf24, #fde047, #fbbf24); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 3px; }
 .brand-sub { color: #a78bfa; font-size: 11px; margin-top: 4px; letter-spacing: 2px; font-family: system-ui, sans-serif; }
-
-.search-wrap {
-    margin-bottom: 10px;
-}
-input[type="text"] {
-    width: 100%;
-    padding: 12px 14px;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(167,139,250,0.4);
-    color: #fff;
-    border-radius: 10px;
-    font-size: 15px;
-    font-family: inherit;
-    outline: none;
-}
+.search-wrap { margin-bottom: 10px; }
+input[type="text"] { width: 100%; padding: 12px 14px; background: rgba(0,0,0,0.4); border: 1px solid rgba(167,139,250,0.4); color: #fff; border-radius: 10px; font-size: 15px; font-family: inherit; outline: none; }
 input[type="text"]:focus { border-color: #fbbf24; }
-
-.tabs {
-    display: flex;
-    gap: 4px;
-    margin-bottom: 12px;
-    background: rgba(0,0,0,0.4);
-    padding: 4px;
-    border-radius: 12px;
-    overflow-x: auto;
-    scrollbar-width: none;
-}
+.tabs { display: flex; gap: 4px; margin-bottom: 12px; background: rgba(0,0,0,0.4); padding: 4px; border-radius: 12px; overflow-x: auto; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
-.tab {
-    flex: 1;
-    min-width: 80px;
-    padding: 10px 8px;
-    text-align: center;
-    color: #a78bfa;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Hiragino Maru Gothic ProN', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    white-space: nowrap;
-}
-.tab.active {
-    background: linear-gradient(135deg, rgba(251,191,36,0.25), rgba(245,158,11,0.15));
-    color: #fbbf24;
-}
-.tab .count {
-    font-size: 10px;
-    opacity: 0.6;
-    margin-left: 4px;
-    font-family: system-ui, sans-serif;
-}
-
-.birthday-bar {
-    background: rgba(30,27,75,0.5);
-    border: 1px solid rgba(167,139,250,0.3);
-    padding: 10px 14px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    color: #c4b5fd;
-}
-.birthday-bar input[type="date"] {
-    flex: 1;
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(167,139,250,0.4);
-    color: #fff;
-    border-radius: 6px;
-    padding: 6px 8px;
-    font-size: 13px;
-    font-family: inherit;
-    outline: none;
-    color-scheme: dark;
-}
-.bd-result {
-    color: #fbbf24;
-    font-weight: 700;
-    font-size: 14px;
-}
-
-.grid {
-    display: grid;
-    gap: 8px;
-}
-.grid.signs    { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
-.grid.planets  { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-.grid.houses   { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
-.grid.aspects  { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-
-.item {
-    background: linear-gradient(160deg, var(--c1, #312e81), var(--c2, #1e1b4b));
-    border: 1px solid rgba(251,191,36,0.4);
-    border-radius: 10px;
-    padding: 12px 8px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
-    position: relative;
-    overflow: hidden;
-}
+.tab { flex: 1; min-width: 80px; padding: 10px 8px; text-align: center; color: #a78bfa; border-radius: 8px; cursor: pointer; font-family: 'Hiragino Maru Gothic ProN', sans-serif; font-size: 13px; font-weight: 700; white-space: nowrap; }
+.tab.active { background: linear-gradient(135deg, rgba(251,191,36,0.25), rgba(245,158,11,0.15)); color: #fbbf24; }
+.tab .count { font-size: 10px; opacity: 0.6; margin-left: 4px; font-family: system-ui, sans-serif; }
+.birthday-bar { background: rgba(30,27,75,0.5); border: 1px solid rgba(167,139,250,0.3); padding: 10px 14px; border-radius: 10px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 12px; color: #c4b5fd; }
+.birthday-bar input[type="date"] { flex: 1; background: rgba(0,0,0,0.4); border: 1px solid rgba(167,139,250,0.4); color: #fff; border-radius: 6px; padding: 6px 8px; font-size: 13px; font-family: inherit; outline: none; color-scheme: dark; }
+.bd-result { color: #fbbf24; font-weight: 700; font-size: 14px; }
+.grid { display: grid; gap: 8px; }
+.grid.signs { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+.grid.planets { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+.grid.houses { grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+.grid.aspects { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.item { background: linear-gradient(160deg, var(--c1, #312e81), var(--c2, #1e1b4b)); border: 1px solid rgba(251,191,36,0.4); border-radius: 10px; padding: 12px 8px; text-align: center; cursor: pointer; transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s; position: relative; overflow: hidden; }
 .item:hover { transform: translateY(-3px); border-color: #fbbf24; box-shadow: 0 6px 20px rgba(251,191,36,0.3); }
 .item .gly { font-size: 30px; line-height: 1; margin-bottom: 4px; color: #fde047; }
 .item .nm { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.3; }
 .item .sub { font-size: 10px; color: rgba(192,132,252,0.8); margin-top: 2px; font-family: system-ui, sans-serif; }
-.item .num {
-    position: absolute;
-    top: 4px; left: 6px;
-    font-size: 10px;
-    color: rgba(251,191,36,0.7);
-    font-family: system-ui, sans-serif;
-    font-weight: 700;
-}
-
-[data-el="fire"]  { --c1: #7f1d1d; --c2: #431407; }
+.item .num { position: absolute; top: 4px; left: 6px; font-size: 10px; color: rgba(251,191,36,0.7); font-family: system-ui, sans-serif; font-weight: 700; }
+[data-el="fire"] { --c1: #7f1d1d; --c2: #431407; }
 [data-el="earth"] { --c1: #14532d; --c2: #052e16; }
-[data-el="air"]   { --c1: #713f12; --c2: #422006; }
+[data-el="air"] { --c1: #713f12; --c2: #422006; }
 [data-el="water"] { --c1: #1e3a8a; --c2: #0c4a6e; }
 [data-pl="luminary"] { --c1: #713f12; --c2: #1e1b4b; }
 [data-pl="personal"] { --c1: #4c1d95; --c2: #1e1b4b; }
-[data-pl="social"]   { --c1: #134e4a; --c2: #0a1f2a; }
-[data-pl="trans"]    { --c1: #4a044e; --c2: #1a0a2a; }
-[data-ho="angular"]    { --c1: #4c1d95; --c2: #1e1b4b; }
-[data-ho="succedent"]  { --c1: #1e3a8a; --c2: #0c4a6e; }
-[data-ho="cadent"]     { --c1: #134e4a; --c2: #0a1f2a; }
+[data-pl="social"] { --c1: #134e4a; --c2: #0a1f2a; }
+[data-pl="trans"] { --c1: #4a044e; --c2: #1a0a2a; }
+[data-ho="angular"] { --c1: #4c1d95; --c2: #1e1b4b; }
+[data-ho="succedent"] { --c1: #1e3a8a; --c2: #0c4a6e; }
+[data-ho="cadent"] { --c1: #134e4a; --c2: #0a1f2a; }
 [data-as="harmonic"] { --c1: #14532d; --c2: #052e16; }
-[data-as="tense"]    { --c1: #7f1d1d; --c2: #431407; }
-[data-as="neutral"]  { --c1: #4c1d95; --c2: #1e1b4b; }
-
-.empty-msg {
-    grid-column: 1 / -1;
-    padding: 40px 20px;
-    text-align: center;
-    color: #6d7680;
-    font-size: 14px;
-}
-
-.element-table {
-    margin-top: 24px;
-    background: rgba(30,27,75,0.4);
-    border: 1px solid rgba(167,139,250,0.3);
-    border-radius: 12px;
-    padding: 14px;
-}
-.element-title {
-    color: #fbbf24;
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-    font-family: system-ui, sans-serif;
-    font-weight: 700;
-}
-.elem-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 6px;
-    align-items: center;
-}
+[data-as="tense"] { --c1: #7f1d1d; --c2: #431407; }
+[data-as="neutral"] { --c1: #4c1d95; --c2: #1e1b4b; }
+.empty-msg { grid-column: 1 / -1; padding: 40px 20px; text-align: center; color: #6d7680; font-size: 14px; }
+.element-table { margin-top: 24px; background: rgba(30,27,75,0.4); border: 1px solid rgba(167,139,250,0.3); border-radius: 12px; padding: 14px; }
+.element-title { color: #fbbf24; font-size: 12px; letter-spacing: 2px; margin-bottom: 8px; font-family: system-ui, sans-serif; font-weight: 700; }
+.elem-row { display: flex; gap: 8px; margin-bottom: 6px; align-items: center; }
 .elem-row:last-child { margin-bottom: 0; }
-.elem-label {
-    width: 60px;
-    font-size: 12px;
-    color: #c4b5fd;
-}
-.elem-signs {
-    display: flex;
-    gap: 4px;
-    flex-wrap: wrap;
-    flex: 1;
-}
-.elem-chip {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(251,191,36,0.3);
-    color: #fde047;
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-family: 'Hiragino Maru Gothic ProN', sans-serif;
-}
-
-/* Modal */
-.modal {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.85);
-    z-index: 100;
-    display: none;
-    align-items: flex-end;
-    justify-content: center;
-    backdrop-filter: blur(8px);
-}
+.elem-label { width: 80px; font-size: 12px; color: #c4b5fd; }
+.elem-signs { display: flex; gap: 4px; flex-wrap: wrap; flex: 1; }
+.elem-chip { background: rgba(0,0,0,0.4); border: 1px solid rgba(251,191,36,0.3); color: #fde047; font-size: 11px; padding: 3px 8px; border-radius: 12px; font-family: 'Hiragino Maru Gothic ProN', sans-serif; cursor: pointer; }
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 100; display: none; align-items: flex-end; justify-content: center; backdrop-filter: blur(8px); }
 .modal.show { display: flex; animation: fadein 0.2s; }
 @keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
-
-.modal-inner {
-    background: linear-gradient(160deg, #1e1b4b, #0f0a1f);
-    border: 1px solid rgba(251,191,36,0.4);
-    border-radius: 20px 20px 0 0;
-    width: 100%;
-    max-width: 560px;
-    max-height: 92vh;
-    overflow-y: auto;
-    padding: 18px 18px 32px;
-    animation: slideup 0.3s cubic-bezier(.2,.7,.3,1);
-}
+.modal-inner { background: linear-gradient(160deg, #1e1b4b, #0f0a1f); border: 1px solid rgba(251,191,36,0.4); border-radius: 20px 20px 0 0; width: 100%; max-width: 560px; max-height: 92vh; overflow-y: auto; padding: 18px 18px 32px; animation: slideup 0.3s cubic-bezier(.2,.7,.3,1); }
 @keyframes slideup { from { transform: translateY(100%); } to { transform: translateY(0); } }
-
-.modal-close {
-    position: sticky;
-    top: 0;
-    margin-left: auto;
-    margin-bottom: -32px;
-    width: 36px; height: 36px;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(167,139,250,0.4);
-    color: #fff;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
-    display: flex; align-items: center; justify-content: center;
-    z-index: 10;
-}
-
-.detail-head {
-    text-align: center;
-    margin-bottom: 18px;
-    padding: 18px 12px;
-    background: linear-gradient(160deg, var(--c1, #312e81), var(--c2, #1e1b4b));
-    border: 2px solid rgba(251,191,36,0.4);
-    border-radius: 14px;
-}
+.modal-close { position: sticky; top: 0; margin-left: auto; margin-bottom: -32px; width: 36px; height: 36px; background: rgba(0,0,0,0.5); border: 1px solid rgba(167,139,250,0.4); color: #fff; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; z-index: 10; }
+.detail-head { text-align: center; margin-bottom: 18px; padding: 18px 12px; background: linear-gradient(160deg, var(--c1, #312e81), var(--c2, #1e1b4b)); border: 2px solid rgba(251,191,36,0.4); border-radius: 14px; }
 .detail-glyph { font-size: 64px; line-height: 1; color: #fde047; margin-bottom: 6px; }
 .detail-name { font-size: 22px; font-weight: 800; color: #fff; }
 .detail-en { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; font-style: italic; font-family: system-ui, sans-serif; }
 .detail-period { font-size: 13px; color: #fbbf24; margin-top: 6px; font-family: system-ui, sans-serif; }
-
-.chips-row {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 14px;
-}
-.chip {
-    background: rgba(167,139,250,0.15);
-    border: 1px solid rgba(167,139,250,0.5);
-    color: #c4b5fd;
-    padding: 4px 10px;
-    border-radius: 14px;
-    font-size: 11px;
-    font-family: system-ui, sans-serif;
-    font-weight: 700;
-}
+.chips-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 14px; }
+.chip { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.5); color: #c4b5fd; padding: 4px 10px; border-radius: 14px; font-size: 11px; font-family: system-ui, sans-serif; font-weight: 700; }
 .chip.gold { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.5); color: #fbbf24; }
-
-.kw-row {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 16px;
-}
-.kw {
-    background: rgba(251,191,36,0.15);
-    border: 1px solid rgba(251,191,36,0.4);
-    color: #fbbf24;
-    padding: 4px 10px;
-    border-radius: 14px;
-    font-size: 12px;
-    font-family: 'Hiragino Maru Gothic ProN', sans-serif;
-    font-weight: 700;
-}
-
-.section {
-    margin-bottom: 12px;
-    padding: 12px 14px;
-    background: rgba(0,0,0,0.3);
-    border-radius: 10px;
-    border-left: 3px solid var(--accent, #a78bfa);
-}
+.kw-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
+.kw { background: rgba(251,191,36,0.15); border: 1px solid rgba(251,191,36,0.4); color: #fbbf24; padding: 4px 10px; border-radius: 14px; font-size: 12px; font-family: 'Hiragino Maru Gothic ProN', sans-serif; font-weight: 700; }
+.section { margin-bottom: 12px; padding: 12px 14px; background: rgba(0,0,0,0.3); border-radius: 10px; border-left: 3px solid var(--accent, #a78bfa); }
 .section.good { --accent: #34d399; }
-.section.bad  { --accent: #f87171; }
+.section.bad { --accent: #f87171; }
 .section.gold { --accent: #fbbf24; }
-.section-title {
-    font-size: 11px;
-    color: var(--accent, #a78bfa);
-    letter-spacing: 2px;
-    margin-bottom: 6px;
-    font-family: system-ui, sans-serif;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-.section-body {
-    font-size: 14px;
-    line-height: 1.7;
-    color: #e6e3f0;
-}
-
-.compat-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 6px;
-}
-.compat {
-    background: rgba(52,211,153,0.15);
-    border: 1px solid rgba(52,211,153,0.4);
-    color: #6ee7b7;
-    padding: 4px 10px;
-    border-radius: 14px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background 0.15s;
-}
-.compat:hover { background: rgba(52,211,153,0.3); }
-
-.advice {
-    background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(245,158,11,0.1));
-    border: 1px solid rgba(251,191,36,0.3);
-    padding: 12px 14px;
-    border-radius: 10px;
-    margin-top: 12px;
-}
-.advice-label {
-    font-size: 11px;
-    color: #fbbf24;
-    letter-spacing: 2px;
-    margin-bottom: 4px;
-    font-weight: 800;
-    font-family: system-ui, sans-serif;
-}
-.advice-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #fef3c7;
-}
-
-.footer {
-    margin-top: 24px;
-    text-align: center;
-    color: #6d7680;
-    font-size: 11px;
-    font-family: system-ui, sans-serif;
-}
+.section-title { font-size: 11px; color: var(--accent, #a78bfa); letter-spacing: 2px; margin-bottom: 6px; font-family: system-ui, sans-serif; font-weight: 800; text-transform: uppercase; }
+.section-body { font-size: 14px; line-height: 1.7; color: #e6e3f0; }
+.compat-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.compat { background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.4); color: #6ee7b7; padding: 4px 10px; border-radius: 14px; font-size: 12px; cursor: pointer; transition: background 0.15s; }
+.advice { background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(245,158,11,0.1)); border: 1px solid rgba(251,191,36,0.3); padding: 12px 14px; border-radius: 10px; margin-top: 12px; }
+.advice-label { font-size: 11px; color: #fbbf24; letter-spacing: 2px; margin-bottom: 4px; font-weight: 800; font-family: system-ui, sans-serif; }
+.advice-text { font-size: 14px; line-height: 1.6; color: #fef3c7; }
+.footer { margin-top: 24px; text-align: center; color: #6d7680; font-size: 11px; font-family: system-ui, sans-serif; }
 .footer a { color: #6d7680; text-decoration: none; }
 </style>
 </head>
 <body>
+<div class="lang-switch">
+    <button class="lang-btn" data-lang="ja">JP</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+</div>
+
 <div class="container">
 
 <div class="topbar">
-    <a href="https://pndshch.github.io/">← Pinda Lab</a>
-    <span style="font-family:system-ui">西洋占星術の意味</span>
+    <a href="https://pndshch.github.io/" data-i18n="back">← Pinda Lab</a>
+    <span style="font-family:system-ui" data-i18n="title">西洋占星術の意味</span>
 </div>
 
 <div class="brand">
-    <div class="brand-title">西洋占星術の意味</div>
+    <div class="brand-title" data-i18n="title">西洋占星術の意味</div>
     <div class="brand-sub">SIGNS · PLANETS · HOUSES · ASPECTS</div>
 </div>
 
 <div class="search-wrap">
-    <input id="search" type="text" placeholder="🔍 名前・キーワードで検索 (例: 牡羊、火星、調和)" autocomplete="off" />
+    <input id="search" type="text" data-i18n-placeholder="searchPlaceholder" placeholder="🔍 名前・キーワードで検索" autocomplete="off" />
 </div>
 
 <div class="tabs" id="tabs">
-    <div class="tab active" data-tab="signs">星座 <span class="count">12</span></div>
-    <div class="tab" data-tab="planets">惑星 <span class="count">10</span></div>
-    <div class="tab" data-tab="houses">ハウス <span class="count">12</span></div>
-    <div class="tab" data-tab="aspects">アスペクト <span class="count">5</span></div>
+    <div class="tab active" data-tab="signs"><span data-i18n="tabSigns">星座</span> <span class="count">12</span></div>
+    <div class="tab" data-tab="planets"><span data-i18n="tabPlanets">惑星</span> <span class="count">10</span></div>
+    <div class="tab" data-tab="houses"><span data-i18n="tabHouses">ハウス</span> <span class="count">12</span></div>
+    <div class="tab" data-tab="aspects"><span data-i18n="tabAspects">アスペクト</span> <span class="count">5</span></div>
 </div>
 
 <div class="birthday-bar" id="bd-bar" style="display:none">
-    <span>🎂 誕生日:</span>
+    <span data-i18n="bdLabel">🎂 誕生日:</span>
     <input id="bd" type="date" />
     <span class="bd-result" id="bd-result">—</span>
 </div>
@@ -429,17 +131,16 @@ input[type="text"]:focus { border-color: #fbbf24; }
 <div class="grid signs" id="grid"></div>
 
 <div class="element-table" id="elemtable">
-    <div class="element-title">▼ 4元素 × 3区分 早見表</div>
+    <div class="element-title" data-i18n="elemTitle">▼ 4元素 × 3区分 早見表</div>
     <div id="elem-rows"></div>
 </div>
 
 <div class="footer">
     <p><a href="https://pndshch.github.io/">© Pinda Lab</a> · <a href="https://www.buymeacoffee.com/pndshch" target="_blank">☕</a></p>
-    <p style="margin-top:6px; font-size:10px; opacity:0.7">解釈は標準的な現代西洋占星術に基づく目安。読み手の直感が最後の答えです。</p>
+    <p style="margin-top:6px; font-size:10px; opacity:0.7" data-i18n="disclaimer">解釈は標準的な現代西洋占星術に基づく目安。読み手の直感が最後の答えです。</p>
 </div>
 </div>
 
-<!-- Modal -->
 <div class="modal" id="modal">
     <div class="modal-inner" id="modal-inner">
         <button class="modal-close" id="close">✕</button>
@@ -449,255 +150,299 @@ input[type="text"]:focus { border-color: #fbbf24; }
 
 <script>
 'use strict';
+const t = (j, e) => ({j, e});
+function L(field) { return field && typeof field === 'object' ? (field[curLang === 'en' ? 'e' : 'j']) : field; }
 
-// ───── 12 SIGNS ─────
-const S = (n,en,gly,p,el,mo,ru,kw,gen,pos,neg,lo,wo,co,ca) =>
-    ({type:'sign',n,en,gly,p,el,mo,ru,kw,gen,pos,neg,lo,wo,co,ca});
+const I18N_UI = {
+    ja: { title: '西洋占星術の意味', back: '← Pinda Lab',
+          searchPlaceholder: '🔍 名前・キーワードで検索 (例: 牡羊、火星、調和)',
+          tabSigns: '星座', tabPlanets: '惑星', tabHouses: 'ハウス', tabAspects: 'アスペクト',
+          bdLabel: '🎂 誕生日:', bdSuffix: ' (太陽)',
+          elemTitle: '▼ 4元素 × 3区分 早見表',
+          disclaimer: '解釈は標準的な現代西洋占星術に基づく目安。読み手の直感が最後の答えです。',
+          notFound: '該当する項目が見つかりません',
+          elem: { fire: '🔥 火', earth: '🌳 地', air: '💨 風', water: '💧 水' },
+          mode: { cardinal: '⚡ 活動宮', fixed: '🗿 不動宮', mutable: '🍃 柔軟宮' },
+          modeNames: { '活動宮': '活動宮', '不動宮': '不動宮', '柔軟宮': '柔軟宮' },
+          rulerLabel: '統治',
+          planetType: { luminary: '発光体', personal: '個人惑星', social: '社会惑星', trans: '世代惑星' },
+          revolution: '公転',
+          houseType: { angular: '⛰ アングルハウス (強い)', succedent: '🏛 サクシーデント (安定)', cadent: '🌬 ケーデント (移行)' },
+          houseTypeShort: { angular: 'アングル', succedent: 'サクシーデント', cadent: 'ケーデント' },
+          houseTypeEn: { angular: 'Angular House', succedent: 'Succedent House', cadent: 'Cadent House' },
+          aspectType: { harmonic: '☀ 調和(ソフト)', tense: '⚡ 緊張(ハード)', neutral: '⚙ 中性' },
+          orbLabel: 'オーブ',
+          sec: { trait: '▼ 基本特性', pos: '▲ 長所', neg: '▼ 短所', love: '💕 恋愛', work: '💼 仕事', compat: '🔗 相性のよい星座', caution: '✦ 注意点',
+                 theme: '▼ テーマ', good: '▲ 良い表れ', shadow: '▼ シャドウ',
+                 hMeaning: '▼ 意味', hPos: '▲ ポジティブな表れ', hNeg: '▼ ネガティブな表れ',
+                 aInterp: '▼ 解釈', aAdvice: '✦ アドバイス' },
+          groups: { sign: '⭐ 星座', planet: '🪐 惑星', house: '🏛 ハウス', aspect: '∠ アスペクト' } },
+    en: { title: 'Western Astrology Reference', back: '← Pinda Lab',
+          searchPlaceholder: '🔍 Search by name or keyword (e.g. Aries, Mars, harmony)',
+          tabSigns: 'Signs', tabPlanets: 'Planets', tabHouses: 'Houses', tabAspects: 'Aspects',
+          bdLabel: '🎂 Birthday:', bdSuffix: ' (Sun)',
+          elemTitle: '▼ 4 Elements × 3 Modalities',
+          disclaimer: 'Based on standard modern Western astrology. Trust your intuition for the final word.',
+          notFound: 'No matching items',
+          elem: { fire: '🔥 Fire', earth: '🌳 Earth', air: '💨 Air', water: '💧 Water' },
+          mode: { cardinal: '⚡ Cardinal', fixed: '🗿 Fixed', mutable: '🍃 Mutable' },
+          modeNames: { '活動宮': 'Cardinal', '不動宮': 'Fixed', '柔軟宮': 'Mutable' },
+          rulerLabel: 'Rules',
+          planetType: { luminary: 'Luminary', personal: 'Personal', social: 'Social', trans: 'Trans-personal' },
+          revolution: 'Cycle',
+          houseType: { angular: '⛰ Angular (strong)', succedent: '🏛 Succedent (stable)', cadent: '🌬 Cadent (transition)' },
+          houseTypeShort: { angular: 'Angular', succedent: 'Succedent', cadent: 'Cadent' },
+          houseTypeEn: { angular: 'Angular House', succedent: 'Succedent House', cadent: 'Cadent House' },
+          aspectType: { harmonic: '☀ Harmonic (soft)', tense: '⚡ Tense (hard)', neutral: '⚙ Neutral' },
+          orbLabel: 'Orb',
+          sec: { trait: '▼ Core Traits', pos: '▲ Strengths', neg: '▼ Shadow side', love: '💕 Love', work: '💼 Work', compat: '🔗 Compatible signs', caution: '✦ Watch out',
+                 theme: '▼ Theme', good: '▲ Healthy expression', shadow: '▼ Shadow',
+                 hMeaning: '▼ Meaning', hPos: '▲ Positive expression', hNeg: '▼ Negative expression',
+                 aInterp: '▼ Interpretation', aAdvice: '✦ Advice' },
+          groups: { sign: '⭐ Signs', planet: '🪐 Planets', house: '🏛 Houses', aspect: '∠ Aspects' } },
+};
+let curLang = 'ja';
+
+const S = (n,en,gly,p,el,mo,ru,kw,gen,pos,neg,lo,wo,co,ca) => ({type:'sign',n,en,gly,p,el,mo,ru,kw,gen,pos,neg,lo,wo,co,ca});
 const SIGNS = [
-    S('牡羊座','Aries','♈','3/21–4/19','fire','活動宮','火星',
-      ['開拓','直球','行動','自我','勇気'],
-      '12星座の最初。新しいことを切り開くパイオニア精神。直情的で行動が早い。負けず嫌いで一番が好き。',
-      '行動力・リーダーシップ・純粋・情熱的・即決即断',
-      '短気・自己中心・我慢ができない・飽きっぽい',
-      '一目惚れタイプ。アプローチも直球。狩人気質で追いかけ甲斐のある相手に燃える。',
-      '起業家・営業・スポーツ・新規開拓。トップで動く方が活きる。指示される仕事は不向き。',
-      ['獅子座','射手座','双子座','水瓶座'],
-      '焦らない。途中で投げ出さない。'),
-    S('牡牛座','Taurus','♉','4/20–5/20','earth','不動宮','金星',
-      ['安定','五感','所有','マイペース','美'],
-      '五感を重視する現実主義者。ゆったり堅実。一度決めると動かない頑固さも。グルメで美意識高い。',
-      '忍耐・安定感・美的センス・信頼性・包容力',
-      '頑固・物欲・変化嫌い・怠惰になりがち',
-      'ゆっくり進む。スキンシップ重視。長続きするタイプ。お金や安定も愛の一部と捉える。',
-      '金融・美容・飲食・建築・農業。コツコツ系で長く続く仕事。',
-      ['乙女座','山羊座','蟹座','魚座'],
-      '変化に対応する柔軟さも必要。'),
-    S('双子座','Gemini','♊','5/21–6/21','air','柔軟宮','水星',
-      ['知性','好奇心','多面性','言葉','軽やか'],
-      '好奇心旺盛で多才。コミュ力高く器用だが、飽きっぽい。情報通でフットワークが軽い。',
-      '機転・適応力・話術・多才・若々しさ',
-      '飽きっぽい・浅い・二面性・落ち着きなし',
-      '会話を楽しむ恋。退屈は天敵。フィーリングで動く軽やかな関係を好む。',
-      'メディア・営業・通訳・IT・ライター。情報を扱う仕事。',
-      ['天秤座','水瓶座','牡羊座','獅子座'],
-      '一点集中の修行も時に必要。'),
-    S('蟹座','Cancer','♋','6/22–7/22','water','活動宮','月',
-      ['家庭','母性','感受性','守る','記憶'],
-      '仲間や家族を守る母性的な人。情に厚い。感受性が強く傷つきやすい。記憶力良好。',
-      '思いやり・守りの強さ・共感力・記憶力・家庭的',
-      '過保護・感情的・内弁慶・ため込む',
-      '一途で深い愛。所有欲も強め。家庭志向で結婚向き。',
-      '看護・教育・飲食・不動産・カウンセラー。ケア系。',
-      ['蠍座','魚座','牡牛座','乙女座'],
-      '内輪意識を超えて広く目を向けて。'),
-    S('獅子座','Leo','♌','7/23–8/22','fire','不動宮','太陽',
-      ['自尊','創造','表現','リーダー','陽気'],
-      '王者の風格。プライド高く堂々としている。表現力豊かでドラマチック。子供のような純粋さも。',
-      'カリスマ・創造性・寛大・楽天的・リーダーシップ',
-      '傲慢・派手好み・認めて欲しい・わがまま',
-      '主役でいたいタイプ。情熱的でドラマチック。褒められると弱い。',
-      '芸能・経営・クリエイター・教師・接客。注目される仕事。',
-      ['牡羊座','射手座','双子座','天秤座'],
-      '謙虚さを忘れずに。'),
-    S('乙女座','Virgo','♍','8/23–9/22','earth','柔軟宮','水星',
-      ['分析','完璧','奉仕','緻密','実用'],
-      '細部までこだわる完璧主義者。分析力と実務能力が抜群。サポート型。健康意識高め。',
-      '几帳面・分析力・実用主義・献身的・誠実',
-      '神経質・批判的・心配性・完璧主義の罠',
-      '慎重で奥手。地味だが誠実。相手の細かいケアが愛情表現。',
-      '経理・編集・医療・IT・秘書。緻密な仕事。',
-      ['牡牛座','山羊座','蟹座','蠍座'],
-      '完璧でなくても十分。自分にも優しく。'),
-    S('天秤座','Libra','♎','9/23–10/23','air','活動宮','金星',
-      ['調和','美','公平','関係性','洗練'],
-      'バランス感覚に優れる調停役。美意識高く社交的。優柔不断な面も。人間関係から学ぶ星座。',
-      '公平・社交・美的センス・礼儀正しい・平和主義',
-      '優柔不断・八方美人・受動的・流される',
-      'ロマンチック。美しい関係を求める。一人より二人が落ち着く。',
-      '弁護士・デザイナー・外交・接客・ファッション。調整役。',
-      ['双子座','水瓶座','獅子座','射手座'],
-      '自分の意見も大事。流されず決断する勇気を。'),
-    S('蠍座','Scorpio','♏','10/24–11/22','water','不動宮','冥王星 (古典: 火星)',
-      ['深層','集中','変容','秘密','再生'],
-      '物事の本質を見抜く深い洞察力。一度決めたら徹底的にやり抜く集中力。神秘的で底知れない魅力。',
-      '集中力・洞察・忠誠心・強さ・神秘性',
-      '嫉妬深い・執着・復讐心・秘密主義',
-      '深く激しい愛。一度結ばれると徹底的。表面的な関係は受け付けない。',
-      '心理・研究・探偵・医療・財務・葬儀。深く掘る仕事。',
-      ['蟹座','魚座','乙女座','山羊座'],
-      '執着を手放す柔軟さを。'),
-    S('射手座','Sagittarius','♐','11/23–12/21','fire','柔軟宮','木星',
-      ['自由','哲学','冒険','拡大','楽天'],
-      '自由を愛する楽天家。哲学的で広い視野。冒険心と探求心。海外や精神世界に興味。',
-      '楽天的・寛大・知的好奇心・直感・高潔',
-      '大ざっぱ・飽きっぽい・無責任・軽はずみ',
-      '友達感覚から発展。束縛は嫌う。一緒に冒険できる相手を求める。',
-      '旅行・教育・哲学・出版・海外関係。広げる仕事。',
-      ['牡羊座','獅子座','天秤座','水瓶座'],
-      '細部や約束は大事に。'),
-    S('山羊座','Capricorn','♑','12/22–1/19','earth','活動宮','土星',
-      ['達成','責任','構築','忍耐','野心'],
-      '着実に頂点を目指す現実主義の野心家。責任感が強く長期視野で動く。地道な努力家。',
-      '責任感・計画性・忍耐・現実主義・信頼性',
-      '堅すぎる・悲観的・冷たい印象・仕事中毒',
-      '真面目で誠実。じっくり育てる。安定した関係を望む。',
-      '経営・公務員・建築・医師・士業。長期キャリア型。',
-      ['牡牛座','乙女座','蠍座','魚座'],
-      '楽しむ余白も忘れずに。'),
-    S('水瓶座','Aquarius','♒','1/20–2/18','air','不動宮','天王星 (古典: 土星)',
-      ['革新','友愛','独自性','自由','理想'],
-      '独自の視点を持つ革新者。友愛精神が強く、人類愛で動く。型にはまるのを嫌う。',
-      '革新性・公平・独立心・友愛・知的',
-      '変わり者・冷淡・反抗的・距離感',
-      '友達のような関係。束縛を嫌う。精神的なつながりを最重視。',
-      'IT・科学・NPO・デザイン・先端産業。新しい分野。',
-      ['双子座','天秤座','牡羊座','射手座'],
-      '感情的な近さも大切に。'),
-    S('魚座','Pisces','♓','2/19–3/20','water','柔軟宮','海王星 (古典: 木星)',
-      ['共感','直感','霊性','夢','慈悲'],
-      '境界がなく溶け合うような共感力。芸術的・霊的感覚に優れる。優しく繊細。',
-      '共感力・直感・想像力・慈悲・芸術性',
-      '流されやすい・現実逃避・依存的・優柔不断',
-      '献身的でロマンチック。一体感を求める。相手に染まりやすい。',
-      '芸術・音楽・介護・スピリチュアル・看護。心を使う仕事。',
-      ['蟹座','蠍座','牡牛座','山羊座'],
-      '自分と他人の境界を意識する。'),
+    S(t('牡羊座','Aries'),'Aries','♈',t('3/21–4/19','Mar 21 – Apr 19'),'fire','活動宮',t('火星','Mars'),
+      t(['開拓','直球','行動','自我','勇気'],['Pioneer','Direct','Action','Self','Courage']),
+      t('12星座の最初。新しいことを切り開くパイオニア精神。直情的で行動が早い。負けず嫌いで一番が好き。','The first sign. Pioneer spirit who breaks new ground. Direct and quick to act, hates losing, loves being first.'),
+      t('行動力・リーダーシップ・純粋・情熱的・即決即断','Drive, leadership, sincerity, passion, decisiveness'),
+      t('短気・自己中心・我慢ができない・飽きっぽい','Quick-tempered, self-centered, impatient, easily bored'),
+      t('一目惚れタイプ。アプローチも直球。狩人気質で追いかけ甲斐のある相手に燃える。','Love at first sight. Direct approach. The hunter type who burns for someone worth chasing.'),
+      t('起業家・営業・スポーツ・新規開拓。トップで動く方が活きる。','Entrepreneur, sales, sports. Thrives at the top, not under instruction.'),
+      [t('獅子座','Leo'),t('射手座','Sagittarius'),t('双子座','Gemini'),t('水瓶座','Aquarius')],
+      t('焦らない。途中で投げ出さない。','Don\'t rush. Don\'t abandon halfway.')),
+    S(t('牡牛座','Taurus'),'Taurus','♉',t('4/20–5/20','Apr 20 – May 20'),'earth','不動宮',t('金星','Venus'),
+      t(['安定','五感','所有','マイペース','美'],['Stable','Senses','Possessing','Steady','Beauty']),
+      t('五感を重視する現実主義者。ゆったり堅実。一度決めると動かない頑固さも。グルメで美意識高い。','A realist who values the five senses. Slow and steady. Once decided, immovable. Gourmet with high aesthetic.'),
+      t('忍耐・安定感・美的センス・信頼性・包容力','Patience, stability, aesthetic taste, reliability, embracing nature'),
+      t('頑固・物欲・変化嫌い・怠惰になりがち','Stubborn, materialistic, change-averse, prone to laziness'),
+      t('ゆっくり進む。スキンシップ重視。長続きするタイプ。','Moves slowly. Values physical affection. Long-lasting type.'),
+      t('金融・美容・飲食・建築・農業。コツコツ系で長く続く仕事。','Finance, beauty, food, construction, agriculture. Steady careers.'),
+      [t('乙女座','Virgo'),t('山羊座','Capricorn'),t('蟹座','Cancer'),t('魚座','Pisces')],
+      t('変化に対応する柔軟さも必要。','Cultivate flexibility for change too.')),
+    S(t('双子座','Gemini'),'Gemini','♊',t('5/21–6/21','May 21 – Jun 21'),'air','柔軟宮',t('水星','Mercury'),
+      t(['知性','好奇心','多面性','言葉','軽やか'],['Intellect','Curiosity','Many-sided','Words','Light']),
+      t('好奇心旺盛で多才。コミュ力高く器用だが、飽きっぽい。情報通でフットワークが軽い。','Curious and versatile. Highly communicative and dexterous, but easily bored. Light-footed info-collector.'),
+      t('機転・適応力・話術・多才・若々しさ','Quick wit, adaptability, eloquence, versatility, youthfulness'),
+      t('飽きっぽい・浅い・二面性・落ち着きなし','Restless, shallow, two-faced, unsettled'),
+      t('会話を楽しむ恋。退屈は天敵。','Loves conversation in romance. Boredom is the enemy.'),
+      t('メディア・営業・通訳・IT・ライター。情報を扱う仕事。','Media, sales, interpreter, IT, writer. Information-handling work.'),
+      [t('天秤座','Libra'),t('水瓶座','Aquarius'),t('牡羊座','Aries'),t('獅子座','Leo')],
+      t('一点集中の修行も時に必要。','Sometimes commit to one focus.')),
+    S(t('蟹座','Cancer'),'Cancer','♋',t('6/22–7/22','Jun 22 – Jul 22'),'water','活動宮',t('月','Moon'),
+      t(['家庭','母性','感受性','守る','記憶'],['Home','Nurturing','Sensitive','Protect','Memory']),
+      t('仲間や家族を守る母性的な人。情に厚い。感受性が強く傷つきやすい。記憶力良好。','A nurturer who protects family and friends. Deeply emotional, sensitive, easily hurt. Sharp memory.'),
+      t('思いやり・守りの強さ・共感力・記憶力・家庭的','Compassion, protective strength, empathy, memory, homey'),
+      t('過保護・感情的・内弁慶・ため込む','Overprotective, emotional, shy outside, holds onto things'),
+      t('一途で深い愛。所有欲も強め。家庭志向。','Loyal and deep love. Strong sense of ownership. Family-oriented.'),
+      t('看護・教育・飲食・不動産・カウンセラー。ケア系。','Nursing, education, food, real estate, counseling. Care-oriented.'),
+      [t('蠍座','Scorpio'),t('魚座','Pisces'),t('牡牛座','Taurus'),t('乙女座','Virgo')],
+      t('内輪意識を超えて広く目を向けて。','Look beyond your inner circle.')),
+    S(t('獅子座','Leo'),'Leo','♌',t('7/23–8/22','Jul 23 – Aug 22'),'fire','不動宮',t('太陽','Sun'),
+      t(['自尊','創造','表現','リーダー','陽気'],['Pride','Creative','Expression','Leader','Cheerful']),
+      t('王者の風格。プライド高く堂々としている。表現力豊かでドラマチック。','Royal presence. Proud and dignified. Expressive and dramatic with childlike purity.'),
+      t('カリスマ・創造性・寛大・楽天的・リーダーシップ','Charisma, creativity, generosity, optimism, leadership'),
+      t('傲慢・派手好み・認めて欲しい・わがまま','Arrogant, flashy, attention-needy, willful'),
+      t('主役でいたいタイプ。情熱的でドラマチック。','Wants to be the star. Passionate and dramatic.'),
+      t('芸能・経営・クリエイター・教師・接客。','Entertainment, management, creator, teacher, hospitality.'),
+      [t('牡羊座','Aries'),t('射手座','Sagittarius'),t('双子座','Gemini'),t('天秤座','Libra')],
+      t('謙虚さを忘れずに。','Don\'t forget humility.')),
+    S(t('乙女座','Virgo'),'Virgo','♍',t('8/23–9/22','Aug 23 – Sep 22'),'earth','柔軟宮',t('水星','Mercury'),
+      t(['分析','完璧','奉仕','緻密','実用'],['Analyze','Perfect','Service','Detailed','Practical']),
+      t('細部までこだわる完璧主義者。分析力と実務能力が抜群。サポート型。健康意識高め。','Detail-oriented perfectionist. Excellent analyst and executor. Support type. Health-conscious.'),
+      t('几帳面・分析力・実用主義・献身的・誠実','Meticulous, analytical, practical, devoted, sincere'),
+      t('神経質・批判的・心配性・完璧主義の罠','Nervous, critical, anxious, perfectionist trap'),
+      t('慎重で奥手。地味だが誠実。','Careful and reserved. Plain but sincere.'),
+      t('経理・編集・医療・IT・秘書。緻密な仕事。','Accounting, editing, medicine, IT, secretarial work. Detail work.'),
+      [t('牡牛座','Taurus'),t('山羊座','Capricorn'),t('蟹座','Cancer'),t('蠍座','Scorpio')],
+      t('完璧でなくても十分。自分にも優しく。','Perfection isn\'t required. Be kind to yourself too.')),
+    S(t('天秤座','Libra'),'Libra','♎',t('9/23–10/23','Sep 23 – Oct 23'),'air','活動宮',t('金星','Venus'),
+      t(['調和','美','公平','関係性','洗練'],['Harmony','Beauty','Fair','Relating','Refined']),
+      t('バランス感覚に優れる調停役。美意識高く社交的。優柔不断な面も。','Mediator with great balance. Aesthetic and social. Sometimes indecisive.'),
+      t('公平・社交・美的センス・礼儀正しい・平和主義','Fair, social, aesthetic, polite, peaceful'),
+      t('優柔不断・八方美人・受動的・流される','Indecisive, people-pleasing, passive, easily swayed'),
+      t('ロマンチック。美しい関係を求める。','Romantic. Seeks a beautiful relationship.'),
+      t('弁護士・デザイナー・外交・接客・ファッション。','Lawyer, designer, diplomat, hospitality, fashion.'),
+      [t('双子座','Gemini'),t('水瓶座','Aquarius'),t('獅子座','Leo'),t('射手座','Sagittarius')],
+      t('自分の意見も大事。流されず決断する勇気を。','Your opinion matters. Decide without being swayed.')),
+    S(t('蠍座','Scorpio'),'Scorpio','♏',t('10/24–11/22','Oct 24 – Nov 22'),'water','不動宮',t('冥王星 (古典: 火星)','Pluto (classical: Mars)'),
+      t(['深層','集中','変容','秘密','再生'],['Depth','Focus','Transform','Secret','Rebirth']),
+      t('物事の本質を見抜く深い洞察力。一度決めたら徹底的にやり抜く集中力。','Deep insight into essence. Once decided, absolute focus. Mysterious unfathomable charm.'),
+      t('集中力・洞察・忠誠心・強さ・神秘性','Concentration, insight, loyalty, strength, mystery'),
+      t('嫉妬深い・執着・復讐心・秘密主義','Jealous, attached, vengeful, secretive'),
+      t('深く激しい愛。一度結ばれると徹底的。','Deep, intense love. Total commitment once bonded.'),
+      t('心理・研究・探偵・医療・財務・葬儀。','Psychology, research, detective, medicine, finance, funeral.'),
+      [t('蟹座','Cancer'),t('魚座','Pisces'),t('乙女座','Virgo'),t('山羊座','Capricorn')],
+      t('執着を手放す柔軟さを。','Cultivate the flexibility to let go.')),
+    S(t('射手座','Sagittarius'),'Sagittarius','♐',t('11/23–12/21','Nov 23 – Dec 21'),'fire','柔軟宮',t('木星','Jupiter'),
+      t(['自由','哲学','冒険','拡大','楽天'],['Freedom','Philosophy','Adventure','Expand','Optimism']),
+      t('自由を愛する楽天家。哲学的で広い視野。冒険心と探求心。','Freedom-loving optimist. Philosophical and broad-minded. Adventurous and curious.'),
+      t('楽天的・寛大・知的好奇心・直感・高潔','Optimistic, generous, intellectually curious, intuitive, noble'),
+      t('大ざっぱ・飽きっぽい・無責任・軽はずみ','Sloppy, restless, irresponsible, careless'),
+      t('友達感覚から発展。束縛は嫌う。','Develops from friendship. Hates constraint.'),
+      t('旅行・教育・哲学・出版・海外関係。','Travel, education, philosophy, publishing, international.'),
+      [t('牡羊座','Aries'),t('獅子座','Leo'),t('天秤座','Libra'),t('水瓶座','Aquarius')],
+      t('細部や約束は大事に。','Take details and promises seriously.')),
+    S(t('山羊座','Capricorn'),'Capricorn','♑',t('12/22–1/19','Dec 22 – Jan 19'),'earth','活動宮',t('土星','Saturn'),
+      t(['達成','責任','構築','忍耐','野心'],['Achieve','Responsible','Build','Patient','Ambition']),
+      t('着実に頂点を目指す現実主義の野心家。責任感が強く長期視野で動く。','Realistic ambitious climber. Strong responsibility and long-term thinking.'),
+      t('責任感・計画性・忍耐・現実主義・信頼性','Responsibility, planning, patience, realism, reliability'),
+      t('堅すぎる・悲観的・冷たい印象・仕事中毒','Too stiff, pessimistic, cold-seeming, workaholic'),
+      t('真面目で誠実。じっくり育てる。','Serious and sincere. Builds slowly.'),
+      t('経営・公務員・建築・医師・士業。長期キャリア型。','Management, civil service, architecture, doctor, professional. Long-term careers.'),
+      [t('牡牛座','Taurus'),t('乙女座','Virgo'),t('蠍座','Scorpio'),t('魚座','Pisces')],
+      t('楽しむ余白も忘れずに。','Don\'t forget margin for fun.')),
+    S(t('水瓶座','Aquarius'),'Aquarius','♒',t('1/20–2/18','Jan 20 – Feb 18'),'air','不動宮',t('天王星 (古典: 土星)','Uranus (classical: Saturn)'),
+      t(['革新','友愛','独自性','自由','理想'],['Innovate','Fraternal','Unique','Freedom','Ideal']),
+      t('独自の視点を持つ革新者。友愛精神が強く、人類愛で動く。','Innovator with unique perspective. Strong fraternal spirit. Acts from love of humanity.'),
+      t('革新性・公平・独立心・友愛・知的','Innovation, fairness, independence, fraternity, intellect'),
+      t('変わり者・冷淡・反抗的・距離感','Eccentric, cold, rebellious, detached'),
+      t('友達のような関係。束縛を嫌う。','Friend-like relationship. Hates constraint.'),
+      t('IT・科学・NPO・デザイン・先端産業。','IT, science, NPO, design, cutting-edge industries.'),
+      [t('双子座','Gemini'),t('天秤座','Libra'),t('牡羊座','Aries'),t('射手座','Sagittarius')],
+      t('感情的な近さも大切に。','Cherish emotional closeness too.')),
+    S(t('魚座','Pisces'),'Pisces','♓',t('2/19–3/20','Feb 19 – Mar 20'),'water','柔軟宮',t('海王星 (古典: 木星)','Neptune (classical: Jupiter)'),
+      t(['共感','直感','霊性','夢','慈悲'],['Empathy','Intuition','Spirit','Dreams','Compassion']),
+      t('境界がなく溶け合うような共感力。芸術的・霊的感覚に優れる。','Boundary-dissolving empathy. Excellent artistic and spiritual sense.'),
+      t('共感力・直感・想像力・慈悲・芸術性','Empathy, intuition, imagination, compassion, artistry'),
+      t('流されやすい・現実逃避・依存的・優柔不断','Easily swayed, escapist, dependent, indecisive'),
+      t('献身的でロマンチック。一体感を求める。','Devoted and romantic. Seeks oneness.'),
+      t('芸術・音楽・介護・スピリチュアル・看護。','Art, music, caregiving, spiritual, nursing.'),
+      [t('蟹座','Cancer'),t('蠍座','Scorpio'),t('牡牛座','Taurus'),t('山羊座','Capricorn')],
+      t('自分と他人の境界を意識する。','Mind the boundary between self and others.')),
 ];
 
-// ───── 10 PLANETS ─────
-const P = (n,en,gly,t,pe,ru,kw,gen,pos,sha) =>
-    ({type:'planet',n,en,gly,t,pe,ru,kw,gen,pos,sha});
+const P = (n,en,gly,ty,pe,ru,kw,gen,pos,sha) => ({type:'planet',n,en,gly,t:ty,pe,ru,kw,gen,pos,sha});
 const PLANETS = [
-    P('太陽','Sun','☉','luminary','約1年で12星座を巡る','獅子座',
-      ['自我','本質','生命力','父親','創造'],
-      '自分の本質・人生の目的・自己表現を司る。チャートで最も重要な天体。アイデンティティの中心。',
-      '自信・創造力・活力・リーダーシップ・健全な自己愛',
-      '傲慢・エゴ・自己中心・支配的'),
-    P('月','Moon','☽','luminary','約27日で12星座','蟹座',
-      ['感情','無意識','母親','家庭','安心'],
-      '感情・無意識・本能的反応・母親像。プライベートな自分。安心の源。',
-      '共感・感受性・育む力・直感',
-      '気分屋・依存・引きこもり・過去執着'),
-    P('水星','Mercury','☿','personal','約88日','双子座 / 乙女座',
-      ['知性','言葉','移動','学習','兄弟'],
-      'コミュニケーション・思考・学び・移動・兄弟。情報の取り扱い全般。',
-      '機知・適応・表現力・学び好き',
-      '浅薄・ずる賢さ・落ち着きなし・神経質'),
-    P('金星','Venus','♀','personal','約225日','牡牛座 / 天秤座',
-      ['愛','美','喜び','価値','お金'],
-      '愛・美・喜び・お金・人間関係の楽しさ。何を美しい・心地よいと感じるか。',
-      '魅力・美的センス・寛容・楽しむ力',
-      '怠惰・浪費・媚び・嫉妬'),
-    P('火星','Mars','♂','personal','約687日','牡羊座 (古典: 蠍座)',
-      ['行動','情熱','闘争','性','勇気'],
-      '行動力・情熱・怒り・性。エネルギーの源。やる気と攻撃性のもと。',
-      '勇気・主体性・達成・健全な怒り',
-      '短気・攻撃性・衝動・暴力'),
-    P('木星','Jupiter','♃','social','約12年(1サイン1年)','射手座 (古典: 魚座)',
-      ['拡大','幸運','哲学','寛大','成長'],
-      '拡大・成長・幸運・高い意識・哲学・旅。人生を広げる。',
-      '楽天・信仰・寛大・成長',
-      '過剰・楽観過剰・怠惰・傲慢'),
-    P('土星','Saturn','♄','social','約29.5年','山羊座 (古典: 水瓶座)',
-      ['制限','責任','構造','試練','時間'],
-      '制限・責任・試練・努力で築くもの・時間。人生に骨格を作る。',
-      '忍耐・規律・成熟・実力',
-      '抑圧・悲観・厳しすぎ・恐れ'),
-    P('天王星','Uranus','♅','trans','約84年','水瓶座',
-      ['革新','自由','突発','改革','独自'],
-      '革新・自由・突発的変化・独自性・時代を超える視点。世代の革命。',
-      '独創・進歩・解放・変革',
-      '反抗・不安定・突発離脱・冷淡'),
-    P('海王星','Neptune','♆','trans','約165年','魚座',
-      ['夢','幻想','霊性','芸術','溶解'],
-      '夢・幻想・霊性・芸術・境界の溶解。世代の理想とスピリチュアリティ。',
-      '共感・創造・慈悲・霊感',
-      '幻想・依存・騙し・現実逃避'),
-    P('冥王星','Pluto','♇','trans','約248年','蠍座',
-      ['変容','破壊と再生','深層','権力'],
-      '徹底的な変容・破壊と再生・深層意識・絶対権力。世代の根本的変化。',
-      '再生力・集中・変革・タフさ',
-      '強迫・支配・破壊・執着'),
+    P(t('太陽','Sun'),'Sun','☉','luminary',t('約1年で12星座を巡る','~1 year through zodiac'),t('獅子座','Leo'),
+      t(['自我','本質','生命力','父親','創造'],['Ego','Essence','Vitality','Father','Creation']),
+      t('自分の本質・人生の目的・自己表現を司る。チャートで最も重要な天体。','Rules essence, life purpose, self-expression. The most important body in the chart.'),
+      t('自信・創造力・活力・リーダーシップ','Confidence, creativity, vitality, leadership'),
+      t('傲慢・エゴ・自己中心・支配的','Arrogance, ego, self-centered, dominating')),
+    P(t('月','Moon'),'Moon','☽','luminary',t('約27日で12星座','~27 days through zodiac'),t('蟹座','Cancer'),
+      t(['感情','無意識','母親','家庭','安心'],['Emotion','Unconscious','Mother','Home','Comfort']),
+      t('感情・無意識・本能的反応・母親像。','Emotion, unconscious, instinct, mother image. The private self.'),
+      t('共感・感受性・育む力・直感','Empathy, sensitivity, nurturing, intuition'),
+      t('気分屋・依存・引きこもり・過去執着','Moody, dependent, withdrawn, stuck in past')),
+    P(t('水星','Mercury'),'Mercury','☿','personal',t('約88日','~88 days'),t('双子座 / 乙女座','Gemini / Virgo'),
+      t(['知性','言葉','移動','学習','兄弟'],['Intellect','Words','Travel','Learning','Siblings']),
+      t('コミュニケーション・思考・学び・移動・兄弟。','Communication, thinking, learning, travel, siblings.'),
+      t('機知・適応・表現力・学び好き','Wit, adaptation, expression, love of learning'),
+      t('浅薄・ずる賢さ・落ち着きなし・神経質','Shallow, sly, restless, nervous')),
+    P(t('金星','Venus'),'Venus','♀','personal',t('約225日','~225 days'),t('牡牛座 / 天秤座','Taurus / Libra'),
+      t(['愛','美','喜び','価値','お金'],['Love','Beauty','Joy','Value','Money']),
+      t('愛・美・喜び・お金・人間関係の楽しさ。','Love, beauty, pleasure, money, the joy of relating.'),
+      t('魅力・美的センス・寛容・楽しむ力','Charm, aesthetic, tolerance, enjoying'),
+      t('怠惰・浪費・媚び・嫉妬','Laziness, extravagance, fawning, jealousy')),
+    P(t('火星','Mars'),'Mars','♂','personal',t('約687日','~687 days'),t('牡羊座 (古典: 蠍座)','Aries (classical: Scorpio)'),
+      t(['行動','情熱','闘争','性','勇気'],['Action','Passion','Battle','Sex','Courage']),
+      t('行動力・情熱・怒り・性。エネルギーの源。','Action, passion, anger, sex. The energy source.'),
+      t('勇気・主体性・達成・健全な怒り','Courage, agency, achievement, healthy anger'),
+      t('短気・攻撃性・衝動・暴力','Quick temper, aggression, impulse, violence')),
+    P(t('木星','Jupiter'),'Jupiter','♃','social',t('約12年(1サイン1年)','~12 years (1yr/sign)'),t('射手座 (古典: 魚座)','Sagittarius (classical: Pisces)'),
+      t(['拡大','幸運','哲学','寛大','成長'],['Expand','Luck','Philosophy','Generous','Growth']),
+      t('拡大・成長・幸運・高い意識・哲学・旅。','Expansion, growth, luck, higher consciousness, philosophy, travel.'),
+      t('楽天・信仰・寛大・成長','Optimism, faith, generosity, growth'),
+      t('過剰・楽観過剰・怠惰・傲慢','Excess, blind optimism, laziness, arrogance')),
+    P(t('土星','Saturn'),'Saturn','♄','social',t('約29.5年','~29.5 years'),t('山羊座 (古典: 水瓶座)','Capricorn (classical: Aquarius)'),
+      t(['制限','責任','構造','試練','時間'],['Limit','Responsible','Structure','Test','Time']),
+      t('制限・責任・試練・努力で築くもの・時間。','Limit, responsibility, trials, things built by effort, time.'),
+      t('忍耐・規律・成熟・実力','Patience, discipline, maturity, true strength'),
+      t('抑圧・悲観・厳しすぎ・恐れ','Repression, pessimism, too strict, fear')),
+    P(t('天王星','Uranus'),'Uranus','♅','trans',t('約84年','~84 years'),t('水瓶座','Aquarius'),
+      t(['革新','自由','突発','改革','独自'],['Revolution','Freedom','Sudden','Reform','Unique']),
+      t('革新・自由・突発的変化・独自性・時代を超える視点。','Innovation, freedom, sudden change, uniqueness, transcendent perspective.'),
+      t('独創・進歩・解放・変革','Originality, progress, liberation, transformation'),
+      t('反抗・不安定・突発離脱・冷淡','Rebellion, instability, abrupt exits, coldness')),
+    P(t('海王星','Neptune'),'Neptune','♆','trans',t('約165年','~165 years'),t('魚座','Pisces'),
+      t(['夢','幻想','霊性','芸術','溶解'],['Dream','Illusion','Spirit','Art','Dissolve']),
+      t('夢・幻想・霊性・芸術・境界の溶解。','Dream, illusion, spirituality, art, boundary dissolution.'),
+      t('共感・創造・慈悲・霊感','Empathy, creativity, compassion, spiritual gift'),
+      t('幻想・依存・騙し・現実逃避','Illusion, dependency, deception, escapism')),
+    P(t('冥王星','Pluto'),'Pluto','♇','trans',t('約248年','~248 years'),t('蠍座','Scorpio'),
+      t(['変容','破壊と再生','深層','権力'],['Transform','Death-Rebirth','Depth','Power']),
+      t('徹底的な変容・破壊と再生・深層意識・絶対権力。','Total transformation, death and rebirth, deep psyche, absolute power.'),
+      t('再生力・集中・変革・タフさ','Regeneration, focus, transformation, toughness'),
+      t('強迫・支配・破壊・執着','Compulsion, control, destruction, obsession')),
 ];
 
-// ───── 12 HOUSES ─────
-const H = (no,nm,ty,topics,gen,pos,neg) =>
-    ({type:'house',no,nm,ty,topics,gen,pos,neg});
+const H = (no,nm,ty,topics,gen,pos,neg) => ({type:'house',no,nm,ty,topics,gen,pos,neg});
 const HOUSES = [
-    H(1,'自己','angular',['自己','外見','第一印象','体','人生の入口'],
-      'あなた自身を表すアセンダント。生まれ持った気質、外見の印象、人生の出発点。',
-      'アイデンティティが明確、行動的、第一印象がよい',
-      '自我が強すぎる、衝動的'),
-    H(2,'所有','succedent',['お金','価値観','才能','所有物','収入'],
-      'あなたが持つもの。物質的・才能的な資産、お金の使い方、価値観。',
-      '安定収入、堅実な資産形成、才能を活かす',
-      '物欲、執着、お金の心配'),
-    H(3,'知性','cadent',['コミュ','兄弟姉妹','短期旅行','学習','近所'],
-      '日常の知性とコミュニケーション。近隣・身近な学び・兄弟関係。',
-      '会話上手、学びが豊か、フットワーク軽い',
-      '落ち着きなし、噂・トラブル、神経過敏'),
-    H(4,'家庭','angular',['家庭','親(母)','基盤','ルーツ','晩年'],
-      'IC(天底)。あなたの土台。家庭環境、親、幼少期、心の根っこ、晩年の住まい。',
-      '安心できる家庭、ルーツとの良好な関係',
-      '家族問題、引きこもり、依存'),
-    H(5,'創造','succedent',['恋愛','創造','子供','娯楽','自己表現'],
-      '自己表現の喜び。恋愛、趣味、創造活動、子供、ギャンブル。',
-      'ロマンス、創造性発揮、楽しみ',
-      '遊びすぎ、ギャンブル、自己中心の表現'),
-    H(6,'労働','cadent',['健康','労働','日常','奉仕','ペット'],
-      '日々の労働と健康。仕事の習慣、ルーティン、奉仕、健康管理。',
-      '健康的な生活、勤勉、奉仕の喜び',
-      '過労、健康問題、奉仕の犠牲'),
-    H(7,'対人','angular',['結婚','パートナー','公的人間関係','敵','契約'],
-      'DC(下降点)。あなたの鏡となる他者。結婚、ビジネスパートナー、公の関係。',
-      '良好な結婚・パートナーシップ、調和',
-      'パートナー間のトラブル、依存、共依存'),
-    H(8,'共有','succedent',['共有財産','性','変容','死と再生','他人の資源'],
-      '二人で共有するもの。性、深い変容、相続、他人のお金、根本変化。',
-      '深い絆、変容力、霊感、財運',
-      '執着、トラブル、相続争い、強迫観念'),
-    H(9,'探求','cadent',['哲学','長期旅行','高等教育','信仰','海外'],
-      '高い学びと探求。哲学、宗教、海外、長期旅行、大学。',
-      '視野の広さ、信仰、海外との縁',
-      '独善、過信、形だけの信仰'),
-    H(10,'達成','angular',['キャリア','名誉','社会的地位','父','頂点'],
-      'MC(天頂)。あなたの社会的成果。キャリア、名声、人生の頂点、父親像。',
-      '社会的成功、名誉、人生の達成',
-      '虚栄、責任の重さ、転落'),
-    H(11,'仲間','succedent',['友情','グループ','希望','ビジョン','理想'],
-      '同志との繋がり。友人、コミュニティ、未来の展望、理想の追求。',
-      '良き仲間、社会活動、ビジョン実現',
-      '群れの中で迷う、理想倒れ、孤独'),
-    H(12,'潜在','cadent',['潜在意識','隠遁','スピリチュアル','秘密','病院'],
-      '目に見えない領域。無意識、霊性、秘密、解脱、入院、隔離。',
-      '霊感、慈悲、解放、スピリチュアル成長',
-      '隠れた敵、秘密、依存、自己破壊'),
+    H(1,t('自己','Self'),'angular',t(['自己','外見','第一印象','体','人生の入口'],['Self','Appearance','First impression','Body','Life start']),
+      t('あなた自身を表すアセンダント。生まれ持った気質、外見の印象、人生の出発点。','The Ascendant. Your innate temperament, outward impression, life\'s starting point.'),
+      t('アイデンティティが明確、行動的、第一印象がよい','Clear identity, active, good first impression'),
+      t('自我が強すぎる、衝動的','Overly assertive ego, impulsive')),
+    H(2,t('所有','Possessions'),'succedent',t(['お金','価値観','才能','所有物','収入'],['Money','Values','Talents','Possessions','Income']),
+      t('あなたが持つもの。物質的・才能的な資産、お金の使い方、価値観。','What you own. Material/talent assets, money use, values.'),
+      t('安定収入、堅実な資産形成、才能を活かす','Stable income, solid asset building, using talents'),
+      t('物欲、執着、お金の心配','Materialism, attachment, money worry')),
+    H(3,t('知性','Communication'),'cadent',t(['コミュ','兄弟姉妹','短期旅行','学習','近所'],['Comms','Siblings','Short trips','Learning','Neighborhood']),
+      t('日常の知性とコミュニケーション。近隣・身近な学び・兄弟関係。','Daily intellect and communication. Local learning, sibling relationships.'),
+      t('会話上手、学びが豊か、フットワーク軽い','Skilled at conversation, rich learning, light-footed'),
+      t('落ち着きなし、噂・トラブル、神経過敏','Restless, gossip troubles, hypersensitive')),
+    H(4,t('家庭','Home'),'angular',t(['家庭','親(母)','基盤','ルーツ','晩年'],['Home','Parent (mother)','Foundation','Roots','Late life']),
+      t('IC(天底)。あなたの土台。家庭環境、親、幼少期、心の根っこ、晩年の住まい。','The IC (nadir). Your foundation. Home environment, parent, childhood, heart\'s root, late-life residence.'),
+      t('安心できる家庭、ルーツとの良好な関係','Secure home, good relationship with roots'),
+      t('家族問題、引きこもり、依存','Family problems, withdrawal, dependence')),
+    H(5,t('創造','Creativity'),'succedent',t(['恋愛','創造','子供','娯楽','自己表現'],['Romance','Creation','Children','Play','Self-expression']),
+      t('自己表現の喜び。恋愛、趣味、創造活動、子供、ギャンブル。','The joy of self-expression. Romance, hobbies, creative work, children, gambling.'),
+      t('ロマンス、創造性発揮、楽しみ','Romance, creative expression, enjoyment'),
+      t('遊びすぎ、ギャンブル、自己中心の表現','Over-playful, gambling, self-centered expression')),
+    H(6,t('労働','Work & Health'),'cadent',t(['健康','労働','日常','奉仕','ペット'],['Health','Work','Daily','Service','Pets']),
+      t('日々の労働と健康。仕事の習慣、ルーティン、奉仕、健康管理。','Daily work and health. Work habits, routine, service, health management.'),
+      t('健康的な生活、勤勉、奉仕の喜び','Healthy life, diligence, joy of service'),
+      t('過労、健康問題、奉仕の犠牲','Overwork, health issues, sacrifice in service')),
+    H(7,t('対人','Partnership'),'angular',t(['結婚','パートナー','公的人間関係','敵','契約'],['Marriage','Partner','Public relations','Enemy','Contract']),
+      t('DC(下降点)。あなたの鏡となる他者。結婚、ビジネスパートナー、公の関係。','The DC (descendant). Others as your mirror. Marriage, business partners, public relations.'),
+      t('良好な結婚・パートナーシップ、調和','Good marriage/partnership, harmony'),
+      t('パートナー間のトラブル、依存、共依存','Partner trouble, dependence, codependence')),
+    H(8,t('共有','Shared'),'succedent',t(['共有財産','性','変容','死と再生','他人の資源'],['Shared resources','Sex','Transform','Death-Rebirth','Others\' resources']),
+      t('二人で共有するもの。性、深い変容、相続、他人のお金、根本変化。','What two people share. Sex, deep transformation, inheritance, others\' money, fundamental change.'),
+      t('深い絆、変容力、霊感、財運','Deep bond, transformative power, intuition, financial luck'),
+      t('執着、トラブル、相続争い、強迫観念','Attachment, trouble, inheritance disputes, obsession')),
+    H(9,t('探求','Quest'),'cadent',t(['哲学','長期旅行','高等教育','信仰','海外'],['Philosophy','Long trips','Higher ed','Faith','Abroad']),
+      t('高い学びと探求。哲学、宗教、海外、長期旅行、大学。','Higher learning and quest. Philosophy, religion, abroad, long trips, university.'),
+      t('視野の広さ、信仰、海外との縁','Broad perspective, faith, ties abroad'),
+      t('独善、過信、形だけの信仰','Self-righteousness, over-confidence, empty faith')),
+    H(10,t('達成','Achievement'),'angular',t(['キャリア','名誉','社会的地位','父','頂点'],['Career','Honor','Status','Father','Peak']),
+      t('MC(天頂)。あなたの社会的成果。キャリア、名声、人生の頂点、父親像。','The MC (zenith). Your social accomplishment. Career, fame, life\'s peak, father image.'),
+      t('社会的成功、名誉、人生の達成','Social success, honor, life achievement'),
+      t('虚栄、責任の重さ、転落','Vanity, weight of responsibility, downfall')),
+    H(11,t('仲間','Friends'),'succedent',t(['友情','グループ','希望','ビジョン','理想'],['Friendship','Group','Hope','Vision','Ideal']),
+      t('同志との繋がり。友人、コミュニティ、未来の展望、理想の追求。','Connection with comrades. Friends, community, future vision, ideal pursuit.'),
+      t('良き仲間、社会活動、ビジョン実現','Good comrades, social activity, vision realized'),
+      t('群れの中で迷う、理想倒れ、孤独','Lost in the crowd, failed idealism, loneliness')),
+    H(12,t('潜在','Hidden'),'cadent',t(['潜在意識','隠遁','スピリチュアル','秘密','病院'],['Unconscious','Seclusion','Spiritual','Secret','Hospital']),
+      t('目に見えない領域。無意識、霊性、秘密、解脱、入院、隔離。','The unseen realm. Unconscious, spirituality, secret, liberation, hospital, isolation.'),
+      t('霊感、慈悲、解放、スピリチュアル成長','Spiritual gift, compassion, liberation, spiritual growth'),
+      t('隠れた敵、秘密、依存、自己破壊','Hidden enemies, secrets, dependency, self-destruction')),
 ];
 
-// ───── 5 ASPECTS ─────
-const A = (n,en,gly,ang,orb,t,kw,gen,ad) =>
-    ({type:'aspect',n,en,gly,ang,orb,t,kw,gen,ad});
+const A = (n,en,gly,ang,orb,ty,kw,gen,ad) => ({type:'aspect',n,en,gly,ang,orb,t:ty,kw,gen,ad});
 const ASPECTS = [
-    A('合(コンジャンクション)','Conjunction','☌','0°','±8°','neutral',
-      ['強調','融合','始まり'],
-      '二つの惑星が同じ位置にある。エネルギーが融合し強烈に。良い惑星なら強化、難しい惑星なら困難も増幅。',
-      '関わる惑星の性質に強く左右される。'),
-    A('セクスタイル','Sextile','⚹','60°','±6°','harmonic',
-      ['機会','才能','軽い調和'],
-      '60度の好相性。意識的に活かせばチャンスが広がる。才能が発揮しやすい。能動的に動くと効果的。',
-      'チャンスは黙って待つだけでは来ない。'),
-    A('スクエア','Square','□','90°','±8°','tense',
-      ['葛藤','成長の試練','挑戦'],
-      '90度の緊張角。葛藤・摩擦が起きるが、それを乗り越えることで成長する重要なアスペクト。',
-      '摩擦こそが鍛錬。逃げずに向き合おう。'),
-    A('トライン','Trine','△','120°','±8°','harmonic',
-      ['才能','自然な流れ','幸運'],
-      '120度の最良アスペクト。何もしなくても自然に流れる。本人は当たり前すぎて気づきにくい才能。',
-      '当たり前のことこそが、あなたの才能。'),
-    A('オポジション','Opposition','☍','180°','±8°','tense',
-      ['対立','投影','気づき'],
-      '180度の正反対。葛藤や対立が起きやすいが、相手を通して自分を理解する。バランスの課題。',
-      '対立は相手のせいではなく自分の影。'),
+    A(t('合(コンジャンクション)','Conjunction'),'Conjunction','☌','0°','±8°','neutral',
+      t(['強調','融合','始まり'],['Emphasis','Merge','Beginning']),
+      t('二つの惑星が同じ位置にある。エネルギーが融合し強烈に。良い惑星なら強化、難しい惑星なら困難も増幅。','Two planets at the same position. Energies merge intensely. Beneficial planets amplify; difficult planets amplify difficulty too.'),
+      t('関わる惑星の性質に強く左右される。','Strongly depends on the planets involved.')),
+    A(t('セクスタイル','Sextile'),'Sextile','⚹','60°','±6°','harmonic',
+      t(['機会','才能','軽い調和'],['Opportunity','Talent','Light harmony']),
+      t('60度の好相性。意識的に活かせばチャンスが広がる。才能が発揮しやすい。能動的に動くと効果的。','60-degree harmony. Consciously used, it expands opportunity. Talent flows. Active engagement amplifies it.'),
+      t('チャンスは黙って待つだけでは来ない。','Opportunity won\'t come by waiting silently.')),
+    A(t('スクエア','Square'),'Square','□','90°','±8°','tense',
+      t(['葛藤','成長の試練','挑戦'],['Conflict','Growth trial','Challenge']),
+      t('90度の緊張角。葛藤・摩擦が起きるが、それを乗り越えることで成長する重要なアスペクト。','90-degree tension. Conflict and friction arise, but overcoming them brings important growth.'),
+      t('摩擦こそが鍛錬。逃げずに向き合おう。','Friction is the discipline. Face it without running.')),
+    A(t('トライン','Trine'),'Trine','△','120°','±8°','harmonic',
+      t(['才能','自然な流れ','幸運'],['Talent','Natural flow','Luck']),
+      t('120度の最良アスペクト。何もしなくても自然に流れる。本人は当たり前すぎて気づきにくい才能。','120-degree best aspect. Flows naturally without effort. The native often takes the talent for granted.'),
+      t('当たり前のことこそが、あなたの才能。','What feels natural to you is your gift.')),
+    A(t('オポジション','Opposition'),'Opposition','☍','180°','±8°','tense',
+      t(['対立','投影','気づき'],['Opposition','Projection','Awareness']),
+      t('180度の正反対。葛藤や対立が起きやすいが、相手を通して自分を理解する。バランス課題。','180-degree polarity. Conflict and opposition tend to arise, but you understand yourself through the other. A balance task.'),
+      t('対立は相手のせいではなく自分の影。','The conflict isn\'t the other\'s fault — it\'s your own shadow.')),
 ];
 
 const ALL = [...SIGNS, ...PLANETS, ...HOUSES, ...ASPECTS];
@@ -711,343 +456,239 @@ const elemTable = document.getElementById('elemtable');
 let curTab = 'signs';
 let curQuery = '';
 
+function applyLang(lang) {
+    curLang = lang;
+    const dict = I18N_UI[lang] || I18N_UI.ja;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.dataset.i18n; if (typeof dict[key] === 'string') el.textContent = dict[key]; });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key = el.dataset.i18nPlaceholder; if (dict[key]) el.placeholder = dict[key]; });
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
+    try { localStorage.setItem('pl-lang', lang); } catch {}
+    document.title = dict.title + ' | Pinda Lab';
+    buildElemTable();
+    renderGrid();
+}
+document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
+
 function matches(item) {
     if (!curQuery) return true;
     const q = curQuery.toLowerCase();
-    const fields = [
-        item.n, item.nm, item.en, ...(item.kw || []),
-        ...(item.topics || []),
-    ].filter(Boolean).map(s => String(s));
-    return fields.some(s => s.toLowerCase().includes(q) || s.includes(curQuery));
+    const fields = [];
+    if (item.n) fields.push(L(item.n));
+    if (item.nm) fields.push(L(item.nm));
+    if (item.en) fields.push(item.en);
+    const kw = L(item.kw);
+    if (Array.isArray(kw)) fields.push(...kw);
+    const topics = L(item.topics);
+    if (Array.isArray(topics)) fields.push(...topics);
+    return fields.some(s => s && (String(s).toLowerCase().includes(q) || String(s).includes(curQuery)));
 }
 
 function renderGrid() {
     grid.innerHTML = '';
     grid.className = 'grid ' + curTab;
+    const dict = I18N_UI[curLang] || I18N_UI.ja;
     let list;
     if (curTab === 'signs') list = SIGNS;
     else if (curTab === 'planets') list = PLANETS;
     else if (curTab === 'houses') list = HOUSES;
     else list = ASPECTS;
     list = list.filter(matches);
-
-    if (list.length === 0) {
-        grid.innerHTML = '<div class="empty-msg">該当する項目が見つかりません</div>';
-        return;
-    }
-
+    if (list.length === 0) { grid.innerHTML = `<div class="empty-msg">${dict.notFound}</div>`; return; }
     list.forEach(item => {
         const el = document.createElement('div');
         el.className = 'item';
         if (item.type === 'sign') el.dataset.el = item.el;
         else if (item.type === 'planet') el.dataset.pl = item.t;
         else if (item.type === 'house') el.dataset.ho = item.ty;
-        else if (item.type === 'aspect') el.dataset.as = item.t;
+        else el.dataset.as = item.t;
 
-        if (item.type === 'sign') {
-            el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${item.n}</div><div class="sub">${item.p}</div>`;
-        } else if (item.type === 'planet') {
-            el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${item.n}</div><div class="sub">${item.en}</div>`;
-        } else if (item.type === 'house') {
-            el.innerHTML = `<div class="num">${item.no}H</div><div class="nm" style="font-size:14px;margin-top:14px">${item.nm}</div><div class="sub">${item.ty === 'angular' ? 'アングル' : item.ty === 'succedent' ? 'サクシーデント' : 'ケーデント'}</div>`;
-        } else if (item.type === 'aspect') {
-            el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${item.n.replace(/\(.*\)/, '')}</div><div class="sub">${item.ang}</div>`;
-        }
+        if (item.type === 'sign') el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${L(item.n)}</div><div class="sub">${L(item.p)}</div>`;
+        else if (item.type === 'planet') el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${L(item.n)}</div><div class="sub">${item.en}</div>`;
+        else if (item.type === 'house') el.innerHTML = `<div class="num">${item.no}H</div><div class="nm" style="font-size:14px;margin-top:14px">${L(item.nm)}</div><div class="sub">${dict.houseTypeShort[item.ty]}</div>`;
+        else el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${L(item.n).replace(/[((].*[))]/, '')}</div><div class="sub">${item.ang}</div>`;
         el.addEventListener('click', () => openModal(item));
         grid.appendChild(el);
     });
 }
 
-// ───── modal ─────
 const modal = document.getElementById('modal');
 const detailContent = document.getElementById('detail-content');
-
 function openModal(item) {
+    const dict = I18N_UI[curLang] || I18N_UI.ja;
     let html = '';
     if (item.type === 'sign') {
+        const kwArr = L(item.kw);
         html = `
         <div class="detail-head" data-el="${item.el}">
             <div class="detail-glyph">${item.gly}</div>
-            <div class="detail-name">${item.n}</div>
+            <div class="detail-name">${L(item.n)}</div>
             <div class="detail-en">${item.en}</div>
-            <div class="detail-period">${item.p}</div>
+            <div class="detail-period">${L(item.p)}</div>
         </div>
         <div class="chips-row">
-            <span class="chip">${({fire:'🔥 火',earth:'🌳 地',air:'💨 風',water:'💧 水'}[item.el])}</span>
-            <span class="chip">${item.mo}</span>
-            <span class="chip gold">統治: ${item.ru}</span>
+            <span class="chip">${dict.elem[item.el]}</span>
+            <span class="chip">${dict.modeNames[item.mo]}</span>
+            <span class="chip gold">${dict.rulerLabel}: ${L(item.ru)}</span>
         </div>
-        <div class="kw-row">${item.kw.map(k => `<span class="kw">${k}</span>`).join('')}</div>
-        <div class="section">
-            <div class="section-title">▼ 基本特性</div>
-            <div class="section-body">${item.gen}</div>
+        <div class="kw-row">${kwArr.map(k => `<span class="kw">${k}</span>`).join('')}</div>
+        <div class="section"><div class="section-title">${dict.sec.trait}</div><div class="section-body">${L(item.gen)}</div></div>
+        <div class="section good"><div class="section-title">${dict.sec.pos}</div><div class="section-body">${L(item.pos)}</div></div>
+        <div class="section bad"><div class="section-title">${dict.sec.neg}</div><div class="section-body">${L(item.neg)}</div></div>
+        <div class="section"><div class="section-title">${dict.sec.love}</div><div class="section-body">${L(item.lo)}</div></div>
+        <div class="section"><div class="section-title">${dict.sec.work}</div><div class="section-body">${L(item.wo)}</div></div>
+        <div class="section"><div class="section-title">${dict.sec.compat}</div>
+            <div class="compat-list">${item.co.map(c => `<span class="compat" data-jump="${L(c)}">${L(c)}</span>`).join('')}</div>
         </div>
-        <div class="section good">
-            <div class="section-title">▲ 長所</div>
-            <div class="section-body">${item.pos}</div>
-        </div>
-        <div class="section bad">
-            <div class="section-title">▼ 短所</div>
-            <div class="section-body">${item.neg}</div>
-        </div>
-        <div class="section">
-            <div class="section-title">💕 恋愛</div>
-            <div class="section-body">${item.lo}</div>
-        </div>
-        <div class="section">
-            <div class="section-title">💼 仕事</div>
-            <div class="section-body">${item.wo}</div>
-        </div>
-        <div class="section">
-            <div class="section-title">🔗 相性のよい星座</div>
-            <div class="compat-list">
-                ${item.co.map(c => `<span class="compat" data-jump="${c}">${c}</span>`).join('')}
-            </div>
-        </div>
-        <div class="advice">
-            <div class="advice-label">✦ 注意点</div>
-            <div class="advice-text">${item.ca}</div>
-        </div>`;
+        <div class="advice"><div class="advice-label">${dict.sec.caution}</div><div class="advice-text">${L(item.ca)}</div></div>`;
     } else if (item.type === 'planet') {
+        const kwArr = L(item.kw);
         html = `
         <div class="detail-head" data-pl="${item.t}">
             <div class="detail-glyph">${item.gly}</div>
-            <div class="detail-name">${item.n}</div>
+            <div class="detail-name">${L(item.n)}</div>
             <div class="detail-en">${item.en}</div>
         </div>
         <div class="chips-row">
-            <span class="chip">${({luminary:'発光体',personal:'個人惑星',social:'社会惑星',trans:'世代惑星'}[item.t])}</span>
-            <span class="chip">公転: ${item.pe}</span>
-            <span class="chip gold">統治: ${item.ru}</span>
+            <span class="chip">${dict.planetType[item.t]}</span>
+            <span class="chip">${dict.revolution}: ${L(item.pe)}</span>
+            <span class="chip gold">${dict.rulerLabel}: ${L(item.ru)}</span>
         </div>
-        <div class="kw-row">${item.kw.map(k => `<span class="kw">${k}</span>`).join('')}</div>
-        <div class="section">
-            <div class="section-title">▼ テーマ</div>
-            <div class="section-body">${item.gen}</div>
-        </div>
-        <div class="section good">
-            <div class="section-title">▲ 良い表れ</div>
-            <div class="section-body">${item.pos}</div>
-        </div>
-        <div class="section bad">
-            <div class="section-title">▼ シャドウ</div>
-            <div class="section-body">${item.sha}</div>
-        </div>`;
+        <div class="kw-row">${kwArr.map(k => `<span class="kw">${k}</span>`).join('')}</div>
+        <div class="section"><div class="section-title">${dict.sec.theme}</div><div class="section-body">${L(item.gen)}</div></div>
+        <div class="section good"><div class="section-title">${dict.sec.good}</div><div class="section-body">${L(item.pos)}</div></div>
+        <div class="section bad"><div class="section-title">${dict.sec.shadow}</div><div class="section-body">${L(item.sha)}</div></div>`;
     } else if (item.type === 'house') {
+        const topicsArr = L(item.topics);
         html = `
         <div class="detail-head" data-ho="${item.ty}">
             <div class="detail-glyph" style="font-size:50px">${item.no}H</div>
-            <div class="detail-name">${item.nm}</div>
-            <div class="detail-en">${({angular:'Angular House',succedent:'Succedent House',cadent:'Cadent House'}[item.ty])}</div>
+            <div class="detail-name">${L(item.nm)}</div>
+            <div class="detail-en">${dict.houseTypeEn[item.ty]}</div>
         </div>
-        <div class="chips-row">
-            <span class="chip">${({angular:'⛰ アングルハウス (強い)',succedent:'🏛 サクシーデント (安定)',cadent:'🌬 ケーデント (移行)'}[item.ty])}</span>
-        </div>
-        <div class="kw-row">${item.topics.map(k => `<span class="kw">${k}</span>`).join('')}</div>
-        <div class="section">
-            <div class="section-title">▼ 意味</div>
-            <div class="section-body">${item.gen}</div>
-        </div>
-        <div class="section good">
-            <div class="section-title">▲ ポジティブな表れ</div>
-            <div class="section-body">${item.pos}</div>
-        </div>
-        <div class="section bad">
-            <div class="section-title">▼ ネガティブな表れ</div>
-            <div class="section-body">${item.neg}</div>
-        </div>`;
-    } else if (item.type === 'aspect') {
+        <div class="chips-row"><span class="chip">${dict.houseType[item.ty]}</span></div>
+        <div class="kw-row">${topicsArr.map(k => `<span class="kw">${k}</span>`).join('')}</div>
+        <div class="section"><div class="section-title">${dict.sec.hMeaning}</div><div class="section-body">${L(item.gen)}</div></div>
+        <div class="section good"><div class="section-title">${dict.sec.hPos}</div><div class="section-body">${L(item.pos)}</div></div>
+        <div class="section bad"><div class="section-title">${dict.sec.hNeg}</div><div class="section-body">${L(item.neg)}</div></div>`;
+    } else {
+        const kwArr = L(item.kw);
         html = `
         <div class="detail-head" data-as="${item.t}">
             <div class="detail-glyph">${item.gly}</div>
-            <div class="detail-name">${item.n}</div>
+            <div class="detail-name">${L(item.n)}</div>
             <div class="detail-en">${item.en}</div>
-            <div class="detail-period">${item.ang} ・ オーブ ${item.orb}</div>
+            <div class="detail-period">${item.ang} ・ ${dict.orbLabel} ${item.orb}</div>
         </div>
-        <div class="chips-row">
-            <span class="chip ${item.t === 'tense' ? '' : 'gold'}">${({harmonic:'☀ 調和(ソフト)',tense:'⚡ 緊張(ハード)',neutral:'⚙ 中性'}[item.t])}</span>
-        </div>
-        <div class="kw-row">${item.kw.map(k => `<span class="kw">${k}</span>`).join('')}</div>
-        <div class="section">
-            <div class="section-title">▼ 解釈</div>
-            <div class="section-body">${item.gen}</div>
-        </div>
-        <div class="advice">
-            <div class="advice-label">✦ アドバイス</div>
-            <div class="advice-text">${item.ad}</div>
-        </div>`;
+        <div class="chips-row"><span class="chip ${item.t === 'tense' ? '' : 'gold'}">${dict.aspectType[item.t]}</span></div>
+        <div class="kw-row">${kwArr.map(k => `<span class="kw">${k}</span>`).join('')}</div>
+        <div class="section"><div class="section-title">${dict.sec.aInterp}</div><div class="section-body">${L(item.gen)}</div></div>
+        <div class="advice"><div class="advice-label">${dict.sec.aAdvice}</div><div class="advice-text">${L(item.ad)}</div></div>`;
     }
     detailContent.innerHTML = html;
-
-    // bind compatibility jumps
     detailContent.querySelectorAll('.compat[data-jump]').forEach(c => {
         c.addEventListener('click', () => {
             const jumpName = c.dataset.jump;
-            const target = SIGNS.find(s => s.n === jumpName);
-            if (target) {
-                document.getElementById('modal-inner').scrollTop = 0;
-                openModal(target);
-            }
+            const target = SIGNS.find(s => L(s.n) === jumpName);
+            if (target) { document.getElementById('modal-inner').scrollTop = 0; openModal(target); }
         });
     });
-
     modal.classList.add('show');
     document.getElementById('modal-inner').scrollTop = 0;
 }
-
 document.getElementById('close').addEventListener('click', () => modal.classList.remove('show'));
 modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
 
-// ───── search & tabs ─────
 search.addEventListener('input', () => {
     curQuery = search.value.trim();
     if (curQuery) {
-        // when searching, search all categories
+        const dict = I18N_UI[curLang] || I18N_UI.ja;
         const matched = ALL.filter(matches);
-        grid.className = 'grid signs';
-        grid.innerHTML = '';
-        if (matched.length === 0) {
-            grid.innerHTML = '<div class="empty-msg">該当する項目が見つかりません</div>';
-        } else {
-            // group by type
-            const groups = { sign: '⭐ 星座', planet: '🪐 惑星', house: '🏛 ハウス', aspect: '∠ アスペクト' };
+        grid.className = 'grid signs'; grid.innerHTML = '';
+        if (matched.length === 0) { grid.innerHTML = `<div class="empty-msg">${dict.notFound}</div>`; }
+        else {
+            const groups = dict.groups;
             const byType = {};
-            matched.forEach(m => {
-                if (!byType[m.type]) byType[m.type] = [];
-                byType[m.type].push(m);
-            });
-            Object.entries(byType).forEach(([t, items]) => {
+            matched.forEach(m => { if (!byType[m.type]) byType[m.type] = []; byType[m.type].push(m); });
+            Object.entries(byType).forEach(([ty, items]) => {
                 const h = document.createElement('div');
                 h.style.cssText = 'grid-column: 1/-1; color: #fbbf24; font-size: 12px; letter-spacing: 2px; padding: 8px 0 4px; font-family: system-ui';
-                h.textContent = groups[t];
+                h.textContent = groups[ty];
                 grid.appendChild(h);
                 items.forEach(item => {
-                    const el = document.createElement('div');
-                    el.className = 'item';
+                    const el = document.createElement('div'); el.className = 'item';
                     if (item.type === 'sign') el.dataset.el = item.el;
                     else if (item.type === 'planet') el.dataset.pl = item.t;
                     else if (item.type === 'house') el.dataset.ho = item.ty;
-                    else if (item.type === 'aspect') el.dataset.as = item.t;
-
-                    if (item.type === 'sign') {
-                        el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${item.n}</div><div class="sub">${item.p}</div>`;
-                    } else if (item.type === 'planet') {
-                        el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${item.n}</div><div class="sub">${item.en}</div>`;
-                    } else if (item.type === 'house') {
-                        el.innerHTML = `<div class="num">${item.no}H</div><div class="nm" style="font-size:14px;margin-top:14px">${item.nm}</div><div class="sub">${item.ty === 'angular' ? 'アングル' : item.ty === 'succedent' ? 'サクシーデント' : 'ケーデント'}</div>`;
-                    } else if (item.type === 'aspect') {
-                        el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${item.n.replace(/\(.*\)/, '')}</div><div class="sub">${item.ang}</div>`;
-                    }
+                    else el.dataset.as = item.t;
+                    if (item.type === 'sign') el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${L(item.n)}</div><div class="sub">${L(item.p)}</div>`;
+                    else if (item.type === 'planet') el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${L(item.n)}</div><div class="sub">${item.en}</div>`;
+                    else if (item.type === 'house') el.innerHTML = `<div class="num">${item.no}H</div><div class="nm" style="font-size:14px;margin-top:14px">${L(item.nm)}</div><div class="sub">${dict.houseTypeShort[item.ty]}</div>`;
+                    else el.innerHTML = `<div class="gly">${item.gly}</div><div class="nm">${L(item.n).replace(/[((].*[))]/, '')}</div><div class="sub">${item.ang}</div>`;
                     el.addEventListener('click', () => openModal(item));
                     grid.appendChild(el);
                 });
             });
         }
-        bdBar.style.display = 'none';
-        elemTable.style.display = 'none';
-    } else {
-        renderGrid();
-        updateExtras();
-    }
+        bdBar.style.display = 'none'; elemTable.style.display = 'none';
+    } else { renderGrid(); updateExtras(); }
 });
 
 tabs.addEventListener('click', (e) => {
-    const t = e.target.closest('.tab');
-    if (!t) return;
-    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === t));
-    curTab = t.dataset.tab;
-    renderGrid();
-    updateExtras();
+    const tg = e.target.closest('.tab'); if (!tg) return;
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === tg));
+    curTab = tg.dataset.tab;
+    renderGrid(); updateExtras();
 });
-
 function updateExtras() {
-    if (curTab === 'signs') {
-        bdBar.style.display = 'flex';
-        elemTable.style.display = 'block';
-    } else {
-        bdBar.style.display = 'none';
-        elemTable.style.display = 'none';
-    }
+    if (curTab === 'signs') { bdBar.style.display = 'flex'; elemTable.style.display = 'block'; }
+    else { bdBar.style.display = 'none'; elemTable.style.display = 'none'; }
 }
 
-// ───── birthday → sun sign ─────
 function getSunSign(month, day) {
-    // boundaries
-    const b = [
-        [1, 19, '山羊座'],
-        [2, 18, '水瓶座'],
-        [3, 20, '魚座'],
-        [4, 19, '牡羊座'],
-        [5, 20, '牡牛座'],
-        [6, 21, '双子座'],
-        [7, 22, '蟹座'],
-        [8, 22, '獅子座'],
-        [9, 22, '乙女座'],
-        [10, 23, '天秤座'],
-        [11, 22, '天秤座'], // wait, this is wrong
-    ];
-    // Use simpler boundary array
-    const bounds = [
-        {until:[1,19], sign:'山羊座'},
-        {until:[2,18], sign:'水瓶座'},
-        {until:[3,20], sign:'魚座'},
-        {until:[4,19], sign:'牡羊座'},
-        {until:[5,20], sign:'牡牛座'},
-        {until:[6,21], sign:'双子座'},
-        {until:[7,22], sign:'蟹座'},
-        {until:[8,22], sign:'獅子座'},
-        {until:[9,22], sign:'乙女座'},
-        {until:[10,23], sign:'天秤座'},
-        {until:[11,22], sign:'蠍座'},
-        {until:[12,21], sign:'射手座'},
-        {until:[12,31], sign:'山羊座'},
-    ];
-    for (const b of bounds) {
-        if (month < b.until[0] || (month === b.until[0] && day <= b.until[1])) {
-            return b.sign;
-        }
-    }
-    return '山羊座';
+    const bounds = [[1,19,'山羊座','Capricorn'],[2,18,'水瓶座','Aquarius'],[3,20,'魚座','Pisces'],[4,19,'牡羊座','Aries'],[5,20,'牡牛座','Taurus'],[6,21,'双子座','Gemini'],[7,22,'蟹座','Cancer'],[8,22,'獅子座','Leo'],[9,22,'乙女座','Virgo'],[10,23,'天秤座','Libra'],[11,22,'蠍座','Scorpio'],[12,21,'射手座','Sagittarius'],[12,31,'山羊座','Capricorn']];
+    for (const b of bounds) { if (month < b[0] || (month === b[0] && day <= b[1])) return curLang === 'en' ? b[3] : b[2]; }
+    return curLang === 'en' ? 'Capricorn' : '山羊座';
 }
-
 document.getElementById('bd').addEventListener('change', (e) => {
-    const v = e.target.value;
-    if (!v) return;
-    const [y, m, d] = v.split('-').map(Number);
+    const v = e.target.value; if (!v) return;
+    const dict = I18N_UI[curLang] || I18N_UI.ja;
+    const [, m, d] = v.split('-').map(Number);
     const s = getSunSign(m, d);
-    document.getElementById('bd-result').textContent = '→ ' + s + ' (太陽)';
+    document.getElementById('bd-result').textContent = '→ ' + s + dict.bdSuffix;
     document.getElementById('bd-result').style.cursor = 'pointer';
     document.getElementById('bd-result').onclick = () => {
-        const sign = SIGNS.find(x => x.n === s);
+        const sign = SIGNS.find(x => L(x.n) === s);
         if (sign) openModal(sign);
     };
 });
 
-// ───── element table ─────
 function buildElemTable() {
+    const dict = I18N_UI[curLang] || I18N_UI.ja;
     const elems = [
-        { lbl: '🔥 火', signs: SIGNS.filter(s => s.el === 'fire') },
-        { lbl: '🌳 地', signs: SIGNS.filter(s => s.el === 'earth') },
-        { lbl: '💨 風', signs: SIGNS.filter(s => s.el === 'air') },
-        { lbl: '💧 水', signs: SIGNS.filter(s => s.el === 'water') },
-        { lbl: '⚡ 活動宮', signs: SIGNS.filter(s => s.mo === '活動宮') },
-        { lbl: '🗿 不動宮', signs: SIGNS.filter(s => s.mo === '不動宮') },
-        { lbl: '🍃 柔軟宮', signs: SIGNS.filter(s => s.mo === '柔軟宮') },
+        { lbl: dict.elem.fire, signs: SIGNS.filter(s => s.el === 'fire') },
+        { lbl: dict.elem.earth, signs: SIGNS.filter(s => s.el === 'earth') },
+        { lbl: dict.elem.air, signs: SIGNS.filter(s => s.el === 'air') },
+        { lbl: dict.elem.water, signs: SIGNS.filter(s => s.el === 'water') },
+        { lbl: dict.mode.cardinal, signs: SIGNS.filter(s => s.mo === '活動宮') },
+        { lbl: dict.mode.fixed, signs: SIGNS.filter(s => s.mo === '不動宮') },
+        { lbl: dict.mode.mutable, signs: SIGNS.filter(s => s.mo === '柔軟宮') },
     ];
     document.getElementById('elem-rows').innerHTML = elems.map(e => `
         <div class="elem-row">
             <div class="elem-label">${e.lbl}</div>
-            <div class="elem-signs">${e.signs.map(s => `<span class="elem-chip" data-sign="${s.n}">${s.gly} ${s.n}</span>`).join('')}</div>
+            <div class="elem-signs">${e.signs.map(s => `<span class="elem-chip" data-sign="${L(s.n)}">${s.gly} ${L(s.n)}</span>`).join('')}</div>
         </div>`).join('');
     document.querySelectorAll('.elem-chip').forEach(c => c.addEventListener('click', () => {
-        const sign = SIGNS.find(s => s.n === c.dataset.sign);
+        const sign = SIGNS.find(s => L(s.n) === c.dataset.sign);
         if (sign) openModal(sign);
     }));
 }
 
-// init
-buildElemTable();
-renderGrid();
+let initLang;
+try { initLang = localStorage.getItem('pl-lang'); } catch {}
+if (!initLang) { const nav = (navigator.language || 'ja').toLowerCase(); initLang = nav.startsWith('ja') ? 'ja' : 'en'; }
+applyLang(initLang);
 updateExtras();
 </script>
 </body>

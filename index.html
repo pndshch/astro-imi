@@ -91,6 +91,88 @@ input[type="text"]:focus { border-color: #fbbf24; }
 .advice-text { font-size: 14px; line-height: 1.6; color: #fef3c7; }
 .footer { margin-top: 24px; text-align: center; color: #6d7680; font-size: 11px; font-family: system-ui, sans-serif; }
 .footer a { color: #6d7680; text-decoration: none; }
+/* ───── Horoscope chart ───── */
+.chart-section { display: none; }
+.chart-section.active { display: block; }
+.chart-form { background: rgba(30,27,75,0.5); border: 1px solid rgba(167,139,250,0.3); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.cf-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: center; flex-wrap: wrap; }
+.cf-row:last-child { margin-bottom: 0; }
+.cf-label { width: 84px; font-size: 12px; color: #c4b5fd; flex-shrink: 0; font-family: system-ui, sans-serif; }
+.cf-input, .cf-select { flex: 1; min-width: 100px; background: rgba(0,0,0,0.4); border: 1px solid rgba(167,139,250,0.4); color: #fff; border-radius: 6px; padding: 7px 10px; font-size: 13px; font-family: system-ui, sans-serif; outline: none; color-scheme: dark; }
+.cf-input:focus, .cf-select:focus { border-color: #fbbf24; }
+.cf-input.short { min-width: 70px; max-width: 110px; flex: 0 1 auto; }
+.cf-help { font-size: 10px; color: #8b85a4; margin-top: 4px; font-family: system-ui, sans-serif; line-height: 1.5; }
+.cf-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #1a1849; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 10px; transition: transform 0.1s, box-shadow 0.15s; }
+.cf-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(251,191,36,0.3); }
+.cf-btn:active { transform: translateY(0); }
+.chart-output { margin-top: 14px; }
+.chart-wheel-wrap { background: radial-gradient(circle at center, rgba(30,27,75,0.6), rgba(10,10,42,0.8)); border: 1px solid rgba(167,139,250,0.3); border-radius: 14px; padding: 8px; text-align: center; margin-bottom: 14px; overflow: hidden; }
+.chart-wheel { width: 100%; max-width: 480px; height: auto; display: block; margin: 0 auto; }
+.chart-meta { font-size: 11px; color: #c4b5fd; padding: 6px 10px; font-family: system-ui, sans-serif; text-align: center; }
+.chart-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+.csum-card { background: linear-gradient(160deg, var(--c1, #312e81), var(--c2, #1e1b4b)); border: 1px solid rgba(251,191,36,0.4); border-radius: 10px; padding: 10px 6px; text-align: center; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+.csum-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(251,191,36,0.25); }
+.csum-label { font-size: 10px; color: #c4b5fd; letter-spacing: 1px; font-family: system-ui, sans-serif; }
+.csum-glyph { font-size: 26px; color: #fde047; line-height: 1.2; margin-top: 2px; }
+.csum-name { font-size: 12px; color: #fff; font-weight: 700; margin-top: 2px; }
+.csum-deg { font-size: 10px; color: #fbbf24; font-family: system-ui, sans-serif; margin-top: 2px; }
+.placement-list, .aspect-list, .balance, .reading-list { background: rgba(30,27,75,0.4); border: 1px solid rgba(167,139,250,0.3); border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; }
+.section-h { color: #fbbf24; font-size: 12px; letter-spacing: 2px; margin-bottom: 10px; font-family: system-ui, sans-serif; font-weight: 700; }
+.placement-row { display: grid; grid-template-columns: 32px 1fr auto; gap: 10px; padding: 8px 4px; border-bottom: 1px dashed rgba(167,139,250,0.15); align-items: center; cursor: pointer; }
+.placement-row:last-child { border-bottom: none; }
+.placement-row:hover { background: rgba(167,139,250,0.08); }
+.pl-glyph { font-size: 22px; color: #fde047; text-align: center; line-height: 1; }
+.pl-text { font-size: 13px; color: #fff; line-height: 1.4; }
+.pl-text .nm { font-weight: 700; }
+.pl-text .pos { color: #c4b5fd; font-size: 11px; font-family: system-ui, sans-serif; margin-top: 1px; }
+.pl-deg { font-size: 10px; color: #fbbf24; text-align: right; font-family: system-ui, sans-serif; line-height: 1.4; }
+.aspect-row { display: grid; grid-template-columns: auto 1fr auto; gap: 8px; padding: 6px 4px; align-items: center; font-size: 12px; cursor: pointer; border-bottom: 1px dashed rgba(167,139,250,0.1); }
+.aspect-row:last-child { border-bottom: none; }
+.aspect-row:hover { background: rgba(167,139,250,0.08); }
+.aspect-row .as-line { color: var(--ac, #fde047); font-weight: 700; font-size: 13px; }
+.aspect-row .as-text { color: #e6e3f0; font-family: system-ui, sans-serif; }
+.aspect-row .as-orb { color: #8b85a4; font-size: 10px; font-family: system-ui, sans-serif; text-align: right; }
+.aspect-row[data-as="harmonic"] { --ac: #6ee7b7; }
+.aspect-row[data-as="tense"] { --ac: #f87171; }
+.aspect-row[data-as="neutral"] { --ac: #fde047; }
+.reading-block { background: rgba(0,0,0,0.3); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; border-left: 3px solid #a78bfa; }
+.reading-block:last-child { margin-bottom: 0; }
+.reading-block.gold { border-left-color: #fbbf24; }
+.reading-head { color: #fde047; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.reading-head .pos { color: #c4b5fd; font-size: 11px; font-weight: 400; margin-left: 6px; font-family: system-ui, sans-serif; }
+.reading-body { font-size: 13px; line-height: 1.75; color: #e6e3f0; }
+.reading-body .em { color: #fbbf24; font-weight: 700; }
+.reading-body p { margin-bottom: 6px; }
+.reading-body p:last-child { margin-bottom: 0; }
+.howto { background: linear-gradient(135deg, rgba(167,139,250,0.12), rgba(251,191,36,0.06)); border: 1px solid rgba(167,139,250,0.3); border-radius: 12px; padding: 14px; margin-bottom: 14px; }
+.howto-title { color: #fbbf24; font-size: 13px; font-weight: 700; margin-bottom: 10px; letter-spacing: 1px; font-family: system-ui, sans-serif; }
+.howto-step { font-size: 13px; line-height: 1.75; color: #e6e3f0; margin-bottom: 10px; padding-left: 18px; position: relative; }
+.howto-step:last-child { margin-bottom: 0; }
+.howto-step::before { content: '✦'; position: absolute; left: 0; top: 0; color: #fbbf24; }
+.howto-step .em { color: #fde047; font-weight: 700; }
+.balance-bars { display: flex; flex-direction: column; gap: 6px; }
+.balance-row { display: grid; grid-template-columns: 88px 1fr 30px; gap: 8px; align-items: center; font-size: 12px; }
+.balance-row .b-label { color: #c4b5fd; font-family: system-ui, sans-serif; }
+.balance-row .b-bar { height: 14px; background: rgba(0,0,0,0.4); border-radius: 7px; overflow: hidden; }
+.balance-row .b-fill { height: 100%; background: linear-gradient(90deg, var(--bc1, #fbbf24), var(--bc2, #f59e0b)); border-radius: 7px; transition: width 0.4s; }
+.balance-row.fire .b-fill { background: linear-gradient(90deg, #f87171, #ea580c); }
+.balance-row.earth .b-fill { background: linear-gradient(90deg, #86efac, #15803d); }
+.balance-row.air .b-fill { background: linear-gradient(90deg, #fde047, #ca8a04); }
+.balance-row.water .b-fill { background: linear-gradient(90deg, #93c5fd, #1d4ed8); }
+.balance-row .b-count { color: #fbbf24; font-family: system-ui, sans-serif; text-align: right; }
+.error-msg { background: rgba(248,113,113,0.15); border: 1px solid rgba(248,113,113,0.4); color: #fca5a5; padding: 12px; border-radius: 10px; font-size: 13px; line-height: 1.6; }
+.muted-note { font-size: 11px; color: #8b85a4; font-family: system-ui, sans-serif; line-height: 1.6; margin-top: 4px; }
+@media (max-width: 480px) {
+  .csum-card { padding: 8px 4px; }
+  .csum-glyph { font-size: 22px; }
+  .csum-name { font-size: 11px; }
+  .csum-label { font-size: 9px; }
+  .csum-deg { font-size: 9px; }
+  .cf-label { width: 100%; }
+  .placement-row { grid-template-columns: 28px 1fr auto; gap: 6px; }
+  .pl-text { font-size: 12px; }
+  .balance-row { grid-template-columns: 70px 1fr 26px; }
+}
 </style>
 </head>
 <body>
@@ -120,6 +202,7 @@ input[type="text"]:focus { border-color: #fbbf24; }
     <div class="tab" data-tab="planets"><span data-i18n="tabPlanets">惑星</span> <span class="count">10</span></div>
     <div class="tab" data-tab="houses"><span data-i18n="tabHouses">ハウス</span> <span class="count">12</span></div>
     <div class="tab" data-tab="aspects"><span data-i18n="tabAspects">アスペクト</span> <span class="count">5</span></div>
+    <div class="tab" data-tab="chart"><span data-i18n="tabChart">ホロスコープ</span> <span class="count">✦</span></div>
 </div>
 
 <div class="birthday-bar" id="bd-bar" style="display:none">
@@ -133,6 +216,36 @@ input[type="text"]:focus { border-color: #fbbf24; }
 <div class="element-table" id="elemtable">
     <div class="element-title" data-i18n="elemTitle">▼ 4元素 × 3区分 早見表</div>
     <div id="elem-rows"></div>
+</div>
+
+<div class="chart-section" id="chart-section">
+    <div class="chart-form">
+        <div class="cf-row">
+            <span class="cf-label" data-i18n="cfDate">📅 生年月日</span>
+            <input id="cf-date" class="cf-input" type="date" />
+        </div>
+        <div class="cf-row">
+            <span class="cf-label" data-i18n="cfTime">🕐 出生時間</span>
+            <input id="cf-time" class="cf-input" type="time" value="12:00" />
+        </div>
+        <div class="cf-row">
+            <span class="cf-label" data-i18n="cfCity">🌏 都市</span>
+            <select id="cf-city" class="cf-select"></select>
+        </div>
+        <div class="cf-row">
+            <span class="cf-label" data-i18n="cfLat">緯度</span>
+            <input id="cf-lat" class="cf-input short" type="number" step="0.0001" value="35.6762" />
+            <span class="cf-label" data-i18n="cfLon" style="width:auto">経度</span>
+            <input id="cf-lon" class="cf-input short" type="number" step="0.0001" value="139.6503" />
+        </div>
+        <div class="cf-row">
+            <span class="cf-label" data-i18n="cfTz">タイムゾーン</span>
+            <select id="cf-tz" class="cf-select"></select>
+        </div>
+        <div class="cf-help" data-i18n="cfHelp">出生時間が不明な場合は12:00を使用 (アセンダントとハウスは目安になります)。</div>
+        <button id="cf-calc" class="cf-btn" data-i18n="cfCalculate">✦ ホロスコープを作成</button>
+    </div>
+    <div class="chart-output" id="chart-output"></div>
 </div>
 
 <div class="footer">
@@ -156,7 +269,7 @@ function L(field) { return field && typeof field === 'object' ? (field[curLang =
 const I18N_UI = {
     ja: { title: '西洋占星術の意味', back: '← Pinda Lab',
           searchPlaceholder: '🔍 名前・キーワードで検索 (例: 牡羊、火星、調和)',
-          tabSigns: '星座', tabPlanets: '惑星', tabHouses: 'ハウス', tabAspects: 'アスペクト',
+          tabSigns: '星座', tabPlanets: '惑星', tabHouses: 'ハウス', tabAspects: 'アスペクト', tabChart: 'ホロスコープ',
           bdLabel: '🎂 誕生日:', bdSuffix: ' (太陽)',
           elemTitle: '▼ 4元素 × 3区分 早見表',
           disclaimer: '解釈は標準的な現代西洋占星術に基づく目安。読み手の直感が最後の答えです。',
@@ -176,10 +289,41 @@ const I18N_UI = {
                  theme: '▼ テーマ', good: '▲ 良い表れ', shadow: '▼ シャドウ',
                  hMeaning: '▼ 意味', hPos: '▲ ポジティブな表れ', hNeg: '▼ ネガティブな表れ',
                  aInterp: '▼ 解釈', aAdvice: '✦ アドバイス' },
-          groups: { sign: '⭐ 星座', planet: '🪐 惑星', house: '🏛 ハウス', aspect: '∠ アスペクト' } },
+          groups: { sign: '⭐ 星座', planet: '🪐 惑星', house: '🏛 ハウス', aspect: '∠ アスペクト' },
+          cfDate: '📅 生年月日', cfTime: '🕐 出生時間', cfCity: '🌏 都市',
+          cfLat: '緯度', cfLon: '経度', cfTz: 'タイムゾーン',
+          cfHelp: '出生時間が不明な場合は12:00を使用 (アセンダントとハウスは目安になります)。',
+          cfCalculate: '✦ ホロスコープを作成',
+          cfCustom: '— 手動入力 —',
+          chHowToTitle: '✦ ホロスコープの読み方',
+          chHowTo: [
+              '<span class="em">アセンダント (ASC・1ハウス)</span> = 生まれた瞬間に東の地平線に昇っていた星座。あなたの「外向きの仮面」「他人から見た第一印象」「人生のスタートライン」を表します。',
+              '<span class="em">太陽</span> = 「本質・人生の目的」。<span class="em">月</span> = 「感情・無意識・心の安らぎ方」。<span class="em">アセンダント</span> = 「外見・行動パターン」。この3つが「ビッグスリー」と呼ばれ、性格を最もよく表します。',
+              '<span class="em">惑星 × 星座</span> = その惑星のエネルギーが「どんな色合いで」表れるか。例: 金星(愛)が牡羊座 → 情熱的でストレートな愛情表現。',
+              '<span class="em">惑星 × ハウス</span> = その惑星のテーマが「人生のどの分野で」働くか。例: 火星(行動)が10ハウス → キャリアで挑戦的に動く。',
+              '<span class="em">アスペクト</span> = 惑星同士の角度。0°(合)/120°(△調和)/60°(⚹機会)は流れがよく、90°(□葛藤)/180°(☍対立)は摩擦と成長の課題を生みます。',
+              '<span class="em">読む順番</span>: ①ビッグスリーで全体像 → ②各惑星の星座/ハウス → ③主要アスペクト → ④4元素・3区分のバランス。'
+          ],
+          chBigThree: '✦ ビッグスリー', chPlanets: '✦ 惑星の配置', chAspects: '✦ 主要アスペクト',
+          chBalance: '✦ 元素・区分のバランス', chReading: '✦ あなたのホロスコープ解読',
+          chSun: '太陽', chMoon: '月', chAsc: 'ASC',
+          chMC: 'MC', chAscFull: 'アセンダント', chMCFull: 'ミディアムコエリ',
+          chHouse: 'ハウス', chHouseSuffix: 'H',
+          chRetro: '逆行',
+          chReadingTpl: {
+              sun: '<span class="em">太陽が{sign}({house}H)</span> — あなたの本質は「{signKw}」。人生の目的やアイデンティティは、{houseTopic}の領域で発揮される。{signGen}',
+              moon: '<span class="em">月が{sign}({house}H)</span> — 感情の安らぎ方は「{signKw}」スタイル。{houseTopic}の領域で心の安全基地を求める。{signGen}',
+              asc: '<span class="em">アセンダントが{sign}</span> — 第一印象や外向きの自分は「{signKw}」。{signGen} 自分らしく生きる入口がここ。',
+              mc: '<span class="em">MCが{sign}</span> — 社会的な目標やキャリアの方向性は「{signKw}」。{signGen}',
+              planet: '<span class="em">{planet}が{sign}({house}H){retro}</span> — {planetKw}が「{signKw}」の表現で、{houseTopic}の場面で働く。{planetGen}'
+          },
+          chAspectTpl: '<span class="em">{p1} {aspectGly} {p2}</span>({orb}°) — {aspectGen}',
+          chDisclaimer: '※ 計算は簡易ヤコブ・ベッセル式に基づく目安です(誤差約0.1°〜1°)。ハウスはホールサイン方式。',
+          errBadInput: '入力に問題があります。生年月日と出生時間を確認してください。',
+          chRetroLong: '逆行 — 内省的・再評価のテーマ' },
     en: { title: 'Western Astrology Reference', back: '← Pinda Lab',
           searchPlaceholder: '🔍 Search by name or keyword (e.g. Aries, Mars, harmony)',
-          tabSigns: 'Signs', tabPlanets: 'Planets', tabHouses: 'Houses', tabAspects: 'Aspects',
+          tabSigns: 'Signs', tabPlanets: 'Planets', tabHouses: 'Houses', tabAspects: 'Aspects', tabChart: 'Chart',
           bdLabel: '🎂 Birthday:', bdSuffix: ' (Sun)',
           elemTitle: '▼ 4 Elements × 3 Modalities',
           disclaimer: 'Based on standard modern Western astrology. Trust your intuition for the final word.',
@@ -199,7 +343,38 @@ const I18N_UI = {
                  theme: '▼ Theme', good: '▲ Healthy expression', shadow: '▼ Shadow',
                  hMeaning: '▼ Meaning', hPos: '▲ Positive expression', hNeg: '▼ Negative expression',
                  aInterp: '▼ Interpretation', aAdvice: '✦ Advice' },
-          groups: { sign: '⭐ Signs', planet: '🪐 Planets', house: '🏛 Houses', aspect: '∠ Aspects' } },
+          groups: { sign: '⭐ Signs', planet: '🪐 Planets', house: '🏛 Houses', aspect: '∠ Aspects' },
+          cfDate: '📅 Birth date', cfTime: '🕐 Birth time', cfCity: '🌏 City',
+          cfLat: 'Lat', cfLon: 'Lon', cfTz: 'Timezone',
+          cfHelp: 'If birth time is unknown, use 12:00 (Ascendant and Houses become approximate).',
+          cfCalculate: '✦ Generate Chart',
+          cfCustom: '— manual entry —',
+          chHowToTitle: '✦ How to read your chart',
+          chHowTo: [
+              '<span class="em">Ascendant (ASC / 1st house)</span> = the sign rising on the eastern horizon at your birth. It represents your "outward mask," first impression, and life\'s starting point.',
+              '<span class="em">Sun</span> = "essence and life purpose." <span class="em">Moon</span> = "emotion, instinct, the inner you." <span class="em">Ascendant</span> = "appearance, behavior pattern." These three are the "Big Three" — the strongest indicators of personality.',
+              '<span class="em">Planet × Sign</span> = how the planet\'s energy is "colored." Example: Venus (love) in Aries → passionate, direct expression of love.',
+              '<span class="em">Planet × House</span> = the life domain in which the planet plays out. Example: Mars (action) in 10th house → bold, ambitious career drive.',
+              '<span class="em">Aspects</span> = angles between planets. 0° (☌) / 120° (△ harmony) / 60° (⚹ opportunity) flow naturally; 90° (□ tension) / 180° (☍ opposition) bring friction and growth.',
+              '<span class="em">Reading order</span>: ① Big Three for the overview → ② each planet\'s sign/house → ③ major aspects → ④ element/modality balance.'
+          ],
+          chBigThree: '✦ The Big Three', chPlanets: '✦ Planet placements', chAspects: '✦ Major aspects',
+          chBalance: '✦ Element / modality balance', chReading: '✦ Your chart reading',
+          chSun: 'Sun', chMoon: 'Moon', chAsc: 'ASC',
+          chMC: 'MC', chAscFull: 'Ascendant', chMCFull: 'Midheaven',
+          chHouse: 'House', chHouseSuffix: 'H',
+          chRetro: 'rx',
+          chReadingTpl: {
+              sun: '<span class="em">Sun in {sign} ({house}H)</span> — your essence is "{signKw}." Life purpose and identity find expression in the area of {houseTopic}. {signGen}',
+              moon: '<span class="em">Moon in {sign} ({house}H)</span> — your emotional comfort style is "{signKw}." You seek your inner safe base in {houseTopic}. {signGen}',
+              asc: '<span class="em">Ascendant in {sign}</span> — your first impression and outer self is "{signKw}." {signGen} This is the gateway to living as yourself.',
+              mc: '<span class="em">MC in {sign}</span> — social goals and career direction are "{signKw}." {signGen}',
+              planet: '<span class="em">{planet} in {sign} ({house}H){retro}</span> — "{planetKw}" expressed through "{signKw}," operating in the area of {houseTopic}. {planetGen}'
+          },
+          chAspectTpl: '<span class="em">{p1} {aspectGly} {p2}</span> ({orb}°) — {aspectGen}',
+          chDisclaimer: '※ Calculations are simplified (Meeus / Standish elements; ~0.1°–1° accuracy). House system: Whole Sign.',
+          errBadInput: 'Invalid input. Please check the birth date and time.',
+          chRetroLong: 'retrograde — inward / re-evaluating theme' },
 };
 let curLang = 'ja';
 
@@ -467,6 +642,8 @@ function applyLang(lang) {
     document.title = dict.title + ' | Pinda Lab';
     buildElemTable();
     renderGrid();
+    if (typeof populateChartForm === 'function') populateChartForm();
+    if (typeof rerenderChartIfPresent === 'function') rerenderChartIfPresent();
 }
 document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => applyLang(btn.dataset.lang)));
 
@@ -486,6 +663,7 @@ function matches(item) {
 
 function renderGrid() {
     grid.innerHTML = '';
+    if (curTab === 'chart') return;
     grid.className = 'grid ' + curTab;
     const dict = I18N_UI[curLang] || I18N_UI.ja;
     let list;
@@ -641,8 +819,17 @@ tabs.addEventListener('click', (e) => {
     renderGrid(); updateExtras();
 });
 function updateExtras() {
-    if (curTab === 'signs') { bdBar.style.display = 'flex'; elemTable.style.display = 'block'; }
-    else { bdBar.style.display = 'none'; elemTable.style.display = 'none'; }
+    const chartSection = document.getElementById('chart-section');
+    if (curTab === 'signs') {
+        bdBar.style.display = 'flex'; elemTable.style.display = 'block';
+        chartSection.classList.remove('active'); grid.style.display = 'grid'; search.parentElement.style.display = 'block';
+    } else if (curTab === 'chart') {
+        bdBar.style.display = 'none'; elemTable.style.display = 'none';
+        chartSection.classList.add('active'); grid.style.display = 'none'; search.parentElement.style.display = 'none';
+    } else {
+        bdBar.style.display = 'none'; elemTable.style.display = 'none';
+        chartSection.classList.remove('active'); grid.style.display = 'grid'; search.parentElement.style.display = 'block';
+    }
 }
 
 function getSunSign(month, day) {
@@ -683,6 +870,641 @@ function buildElemTable() {
         const sign = SIGNS.find(s => L(s.n) === c.dataset.sign);
         if (sign) openModal(sign);
     }));
+}
+
+// ───── Horoscope chart ─────
+const DEG = Math.PI / 180;
+const mod360 = a => { a = a % 360; return a < 0 ? a + 360 : a; };
+
+const SIGN_ORDER = ['牡羊座','牡牛座','双子座','蟹座','獅子座','乙女座','天秤座','蠍座','射手座','山羊座','水瓶座','魚座'];
+
+const CITIES = [
+    ['東京','Tokyo',35.6762,139.6503,'Asia/Tokyo'],
+    ['大阪','Osaka',34.6937,135.5023,'Asia/Tokyo'],
+    ['札幌','Sapporo',43.0618,141.3545,'Asia/Tokyo'],
+    ['名古屋','Nagoya',35.1815,136.9066,'Asia/Tokyo'],
+    ['福岡','Fukuoka',33.5904,130.4017,'Asia/Tokyo'],
+    ['京都','Kyoto',35.0116,135.7681,'Asia/Tokyo'],
+    ['仙台','Sendai',38.2682,140.8694,'Asia/Tokyo'],
+    ['広島','Hiroshima',34.3853,132.4553,'Asia/Tokyo'],
+    ['那覇 (沖縄)','Naha (Okinawa)',26.2124,127.6809,'Asia/Tokyo'],
+    ['ソウル','Seoul',37.5665,126.9780,'Asia/Seoul'],
+    ['北京','Beijing',39.9042,116.4074,'Asia/Shanghai'],
+    ['上海','Shanghai',31.2304,121.4737,'Asia/Shanghai'],
+    ['台北','Taipei',25.0330,121.5654,'Asia/Taipei'],
+    ['香港','Hong Kong',22.3193,114.1694,'Asia/Hong_Kong'],
+    ['シンガポール','Singapore',1.3521,103.8198,'Asia/Singapore'],
+    ['バンコク','Bangkok',13.7563,100.5018,'Asia/Bangkok'],
+    ['デリー','New Delhi',28.6139,77.2090,'Asia/Kolkata'],
+    ['ドバイ','Dubai',25.2048,55.2708,'Asia/Dubai'],
+    ['イスタンブール','Istanbul',41.0082,28.9784,'Europe/Istanbul'],
+    ['モスクワ','Moscow',55.7558,37.6173,'Europe/Moscow'],
+    ['ベルリン','Berlin',52.5200,13.4050,'Europe/Berlin'],
+    ['パリ','Paris',48.8566,2.3522,'Europe/Paris'],
+    ['ローマ','Rome',41.9028,12.4964,'Europe/Rome'],
+    ['ロンドン','London',51.5074,-0.1278,'Europe/London'],
+    ['ニューヨーク','New York',40.7128,-74.0060,'America/New_York'],
+    ['ロサンゼルス','Los Angeles',34.0522,-118.2437,'America/Los_Angeles'],
+    ['シカゴ','Chicago',41.8781,-87.6298,'America/Chicago'],
+    ['トロント','Toronto',43.6532,-79.3832,'America/Toronto'],
+    ['メキシコシティ','Mexico City',19.4326,-99.1332,'America/Mexico_City'],
+    ['サンパウロ','São Paulo',-23.5505,-46.6333,'America/Sao_Paulo'],
+    ['シドニー','Sydney',-33.8688,151.2093,'Australia/Sydney'],
+    ['ホノルル','Honolulu',21.3099,-157.8581,'Pacific/Honolulu'],
+];
+
+const TZ_LIST = [
+    ['Asia/Tokyo','東京 (UTC+9)','Tokyo (UTC+9)'],
+    ['Asia/Seoul','ソウル (UTC+9)','Seoul (UTC+9)'],
+    ['Asia/Shanghai','北京 / 上海 (UTC+8)','Beijing / Shanghai (UTC+8)'],
+    ['Asia/Taipei','台北 (UTC+8)','Taipei (UTC+8)'],
+    ['Asia/Hong_Kong','香港 (UTC+8)','Hong Kong (UTC+8)'],
+    ['Asia/Singapore','シンガポール (UTC+8)','Singapore (UTC+8)'],
+    ['Asia/Bangkok','バンコク (UTC+7)','Bangkok (UTC+7)'],
+    ['Asia/Kolkata','インド (UTC+5:30)','India (UTC+5:30)'],
+    ['Asia/Dubai','ドバイ (UTC+4)','Dubai (UTC+4)'],
+    ['Europe/Moscow','モスクワ (UTC+3)','Moscow (UTC+3)'],
+    ['Europe/Istanbul','イスタンブール (UTC+3)','Istanbul (UTC+3)'],
+    ['Europe/Athens','アテネ (UTC+2/+3)','Athens (UTC+2/+3)'],
+    ['Europe/Berlin','ベルリン (UTC+1/+2)','Berlin (UTC+1/+2)'],
+    ['Europe/Paris','パリ (UTC+1/+2)','Paris (UTC+1/+2)'],
+    ['Europe/Rome','ローマ (UTC+1/+2)','Rome (UTC+1/+2)'],
+    ['Europe/London','ロンドン (UTC+0/+1)','London (UTC+0/+1)'],
+    ['UTC','UTC (UTC+0)','UTC (UTC+0)'],
+    ['America/Sao_Paulo','サンパウロ (UTC-3)','São Paulo (UTC-3)'],
+    ['America/New_York','ニューヨーク (UTC-5/-4)','New York (UTC-5/-4)'],
+    ['America/Toronto','トロント (UTC-5/-4)','Toronto (UTC-5/-4)'],
+    ['America/Mexico_City','メキシコシティ (UTC-6/-5)','Mexico City (UTC-6/-5)'],
+    ['America/Chicago','シカゴ (UTC-6/-5)','Chicago (UTC-6/-5)'],
+    ['America/Denver','デンバー (UTC-7/-6)','Denver (UTC-7/-6)'],
+    ['America/Los_Angeles','ロサンゼルス (UTC-8/-7)','Los Angeles (UTC-8/-7)'],
+    ['Pacific/Honolulu','ホノルル (UTC-10)','Honolulu (UTC-10)'],
+    ['Pacific/Auckland','オークランド (UTC+12/+13)','Auckland (UTC+12/+13)'],
+    ['Australia/Sydney','シドニー (UTC+10/+11)','Sydney (UTC+10/+11)'],
+];
+
+// JPL Standish mean orbital elements (J2000 ecliptic): [a, e, I, L, wbar, Om] (deg) and rates per cy
+const PE = {
+    Mercury: [[0.38709927,0.20563593,7.00497902,252.25032350,77.45779628,48.33076593],
+              [0.00000037,0.00001906,-0.00594749,149472.67411175,0.16047689,-0.12534081]],
+    Venus:   [[0.72333566,0.00677672,3.39467605,181.97909950,131.60246718,76.67984255],
+              [0.00000390,-0.00004107,-0.00078890,58517.81538729,0.00268329,-0.27769418]],
+    Earth:   [[1.00000261,0.01671123,-0.00001531,100.46457166,102.93768193,0.0],
+              [0.00000562,-0.00004392,-0.01294668,35999.37244981,0.32327364,0.0]],
+    Mars:    [[1.52371034,0.09339410,1.84969142,-4.55343205,-23.94362959,49.55953891],
+              [0.00001847,0.00007882,-0.00813131,19140.30268499,0.44441088,-0.29257343]],
+    Jupiter: [[5.20288700,0.04838624,1.30439695,34.39644051,14.72847983,100.47390909],
+              [-0.00011607,-0.00013253,-0.00183714,3034.74612775,0.21252668,0.20469106]],
+    Saturn:  [[9.53667594,0.05386179,2.48599187,49.95424423,92.59887831,113.66242448],
+              [-0.00125060,-0.00050991,0.00193609,1222.49362201,-0.41897216,-0.28867794]],
+    Uranus:  [[19.18916464,0.04725744,0.77263783,313.23810451,170.95427630,74.01692503],
+              [-0.00196176,-0.00004397,-0.00242939,428.48202785,0.40805281,0.04240589]],
+    Neptune: [[30.06992276,0.00859048,1.77004347,-55.12002969,44.96476227,131.78422574],
+              [0.00026291,0.00005105,0.00035372,218.45945325,-0.32241464,-0.00508664]],
+    Pluto:   [[39.48211675,0.24882730,17.14001206,238.92903833,224.06891629,110.30393684],
+              [-0.00031596,0.00005170,0.00004818,145.20780515,-0.04062942,-0.01183482]]
+};
+
+function jdUTC(y, m, d, hour, minute) {
+    let yy = y, mm = m;
+    if (mm <= 2) { yy -= 1; mm += 12; }
+    const A = Math.floor(yy / 100);
+    const B = 2 - A + Math.floor(A / 4);
+    const jd = Math.floor(365.25 * (yy + 4716)) + Math.floor(30.6001 * (mm + 1)) + d + B - 1524.5;
+    return jd + (hour + minute / 60) / 24;
+}
+
+function localToJD(y, m, d, hour, minute, tz) {
+    let utcMs = Date.UTC(y, m - 1, d, hour, minute);
+    for (let i = 0; i < 3; i++) {
+        const fmt = new Intl.DateTimeFormat('en-US', {
+            timeZone: tz, year:'numeric', month:'2-digit', day:'2-digit',
+            hour:'2-digit', minute:'2-digit', second:'2-digit', hour12: false
+        });
+        const parts = fmt.formatToParts(new Date(utcMs));
+        const o = {};
+        parts.forEach(p => { if (p.type !== 'literal') o[p.type] = p.value; });
+        let hh = +o.hour; if (hh === 24) hh = 0;
+        const projected = Date.UTC(+o.year, +o.month - 1, +o.day, hh, +o.minute, +(o.second || 0));
+        const target = Date.UTC(y, m - 1, d, hour, minute);
+        utcMs += target - projected;
+    }
+    const dt = new Date(utcMs);
+    return jdUTC(dt.getUTCFullYear(), dt.getUTCMonth() + 1, dt.getUTCDate(),
+                 dt.getUTCHours(), dt.getUTCMinutes() + dt.getUTCSeconds() / 60);
+}
+
+function solveKepler(M, e) {
+    let E = M + e * Math.sin(M);
+    for (let i = 0; i < 30; i++) {
+        const dE = (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E));
+        E -= dE;
+        if (Math.abs(dE) < 1e-12) break;
+    }
+    return E;
+}
+
+function helio(planet, T) {
+    const [base, rate] = PE[planet];
+    const a = base[0] + rate[0] * T;
+    const e = base[1] + rate[1] * T;
+    const I = (base[2] + rate[2] * T) * DEG;
+    const L = base[3] + rate[3] * T;
+    const wbar = base[4] + rate[4] * T;
+    const Om = (base[5] + rate[5] * T) * DEG;
+    let M = mod360(L - wbar);
+    if (M > 180) M -= 360;
+    M *= DEG;
+    const E = solveKepler(M, e);
+    const xp = a * (Math.cos(E) - e);
+    const yp = a * Math.sqrt(1 - e * e) * Math.sin(E);
+    const omega = wbar * DEG - Om;
+    const cO = Math.cos(Om), sO = Math.sin(Om);
+    const cI = Math.cos(I), sI = Math.sin(I);
+    const cw = Math.cos(omega), sw = Math.sin(omega);
+    const x = (cw * cO - sw * sO * cI) * xp + (-sw * cO - cw * sO * cI) * yp;
+    const y = (cw * sO + sw * cO * cI) * xp + (-sw * sO + cw * cO * cI) * yp;
+    const z = sw * sI * xp + cw * sI * yp;
+    return [x, y, z];
+}
+
+function geoLong(planet, T) {
+    if (planet === 'Sun') {
+        const [ex, ey] = helio('Earth', T);
+        return mod360(Math.atan2(-ey, -ex) / DEG);
+    }
+    const [px, py] = helio(planet, T);
+    const [ex, ey] = helio('Earth', T);
+    return mod360(Math.atan2(py - ey, px - ex) / DEG);
+}
+
+function precessionLon(T) {
+    return (5028.796195 * T + 1.1054348 * T * T) / 3600;
+}
+
+function tropical(j2kLong, T) {
+    return mod360(j2kLong + precessionLon(T));
+}
+
+function moonLong(jd) {
+    const T = (jd - 2451545) / 36525;
+    const Lm = 218.3164477 + 481267.88123421 * T - 0.0015786 * T * T;
+    const D = (297.8501921 + 445267.1114034 * T - 0.0018819 * T * T) * DEG;
+    const M = (357.5291092 + 35999.0502909 * T - 0.0001536 * T * T) * DEG;
+    const Mp = (134.9633964 + 477198.8675055 * T + 0.0087414 * T * T) * DEG;
+    const F = (93.2720950 + 483202.0175233 * T - 0.0036539 * T * T) * DEG;
+    let dL = 0;
+    dL += 6.288774 * Math.sin(Mp);
+    dL += 1.274027 * Math.sin(2*D - Mp);
+    dL += 0.658314 * Math.sin(2*D);
+    dL += 0.213618 * Math.sin(2*Mp);
+    dL -= 0.185116 * Math.sin(M);
+    dL -= 0.114332 * Math.sin(2*F);
+    dL += 0.058793 * Math.sin(2*D - 2*Mp);
+    dL += 0.057066 * Math.sin(2*D - M - Mp);
+    dL += 0.053322 * Math.sin(2*D + Mp);
+    dL += 0.045758 * Math.sin(2*D - M);
+    dL -= 0.040923 * Math.sin(M - Mp);
+    dL -= 0.034720 * Math.sin(D);
+    dL -= 0.030383 * Math.sin(M + Mp);
+    dL += 0.015327 * Math.sin(2*D - 2*F);
+    dL -= 0.012528 * Math.sin(Mp + 2*F);
+    dL += 0.010980 * Math.sin(Mp - 2*F);
+    dL += 0.010675 * Math.sin(4*D - Mp);
+    dL += 0.010034 * Math.sin(3*Mp);
+    dL += 0.008548 * Math.sin(4*D - 2*Mp);
+    return mod360(Lm + dL);
+}
+
+function isRetrograde(planet, jd) {
+    if (planet === 'Sun' || planet === 'Moon') return false;
+    const T1 = (jd - 0.5 - 2451545) / 36525;
+    const T2 = (jd + 0.5 - 2451545) / 36525;
+    const l1 = tropical(geoLong(planet, T1), T1);
+    const l2 = tropical(geoLong(planet, T2), T2);
+    let d = l2 - l1;
+    if (d > 180) d -= 360;
+    if (d < -180) d += 360;
+    return d < 0;
+}
+
+function gmst(jd) {
+    const T = (jd - 2451545.0) / 36525;
+    const theta = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T - T * T * T / 38710000.0;
+    return mod360(theta);
+}
+
+function obliquity(jd) {
+    const T = (jd - 2451545.0) / 36525;
+    return 23.43929111 - 0.0130041667 * T - 1.638889e-7 * T * T + 5.0361e-7 * T * T * T;
+}
+
+function ascMC(jd, lat, lon) {
+    const lstDeg = mod360(gmst(jd) + lon);
+    const ramc = lstDeg * DEG;
+    const eps = obliquity(jd) * DEG;
+    const phi = lat * DEG;
+    const mcRad = Math.atan2(Math.sin(ramc), Math.cos(ramc) * Math.cos(eps));
+    const mc = mod360(mcRad / DEG);
+    const ascRad = Math.atan2(Math.cos(ramc), -(Math.sin(eps) * Math.tan(phi) + Math.cos(eps) * Math.sin(ramc)));
+    const asc = mod360(ascRad / DEG);
+    return { asc, mc, lst: lstDeg };
+}
+
+function signOfLong(lon) { return Math.floor(mod360(lon) / 30); }
+function degInSign(lon) { return mod360(lon) % 30; }
+function formatDeg(lon) {
+    const d = degInSign(lon);
+    const deg = Math.floor(d);
+    const min = Math.floor((d - deg) * 60);
+    return `${deg}°${String(min).padStart(2,'0')}'`;
+}
+function houseOfLong(lon, ascSignIdx) {
+    const ps = signOfLong(lon);
+    let h = ps - ascSignIdx + 1;
+    if (h <= 0) h += 12;
+    return h;
+}
+
+const ASPECT_DEFS = [
+    { ang: 0,   orb: 8, type: 'neutral',  gly: '☌', idx: 0 },
+    { ang: 60,  orb: 5, type: 'harmonic', gly: '⚹', idx: 1 },
+    { ang: 90,  orb: 7, type: 'tense',    gly: '□', idx: 2 },
+    { ang: 120, orb: 7, type: 'harmonic', gly: '△', idx: 3 },
+    { ang: 180, orb: 8, type: 'tense',    gly: '☍', idx: 4 },
+];
+
+function detectAspect(lonA, lonB) {
+    let d = Math.abs(mod360(lonA) - mod360(lonB));
+    if (d > 180) d = 360 - d;
+    let best = null;
+    for (const a of ASPECT_DEFS) {
+        const orb = Math.abs(d - a.ang);
+        if (orb <= a.orb && (!best || orb < best.orb)) best = { ...a, orb };
+    }
+    return best;
+}
+
+const PLANET_GLYPHS = { Sun:'☉', Moon:'☽', Mercury:'☿', Venus:'♀', Mars:'♂',
+                        Jupiter:'♃', Saturn:'♄', Uranus:'♅', Neptune:'♆', Pluto:'♇' };
+const PLANET_ORDER = ['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto'];
+
+function computeChart(y, m, d, hour, minute, lat, lon, tz) {
+    const jd = localToJD(y, m, d, hour, minute, tz);
+    const T = (jd - 2451545) / 36525;
+    const placements = {};
+    placements.Sun  = tropical(geoLong('Sun', T), T);
+    placements.Moon = moonLong(jd);
+    for (const p of ['Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto']) {
+        placements[p] = tropical(geoLong(p, T), T);
+    }
+    const retro = {};
+    for (const p of PLANET_ORDER) retro[p] = isRetrograde(p, jd);
+    const am = ascMC(jd, lat, lon);
+    placements.ASC = am.asc;
+    placements.MC = am.mc;
+    const ascSignIdx = signOfLong(am.asc);
+    const houses = {};
+    for (const p of PLANET_ORDER) houses[p] = houseOfLong(placements[p], ascSignIdx);
+    houses.ASC = 1;
+    houses.MC = houseOfLong(am.mc, ascSignIdx);
+    const aspects = [];
+    for (let i = 0; i < PLANET_ORDER.length; i++) {
+        for (let j = i + 1; j < PLANET_ORDER.length; j++) {
+            const a = detectAspect(placements[PLANET_ORDER[i]], placements[PLANET_ORDER[j]]);
+            if (a) aspects.push({ p1: PLANET_ORDER[i], p2: PLANET_ORDER[j], ...a });
+        }
+    }
+    return { jd, placements, retro, houses, ascSignIdx };
+}
+
+// ───── SVG chart wheel ─────
+function svgChartWheel(chart) {
+    const { placements, retro, ascSignIdx } = chart;
+    const W = 480, H = 480, cx = W/2, cy = H/2;
+    const R_OUT = 230, R_SIGN_IN = 198, R_HOUSE_IN = 168, R_INNER = 150, R_ASPECT = 120;
+    const asc = placements.ASC;
+    const angleRad = lon => (180 + (lon - asc)) * DEG;
+    const xy = (lon, r) => {
+        const t = angleRad(lon);
+        return [cx + r * Math.cos(t), cy - r * Math.sin(t)];
+    };
+    const arc = (r1, r2, lonStart, lonEnd, fill, stroke) => {
+        const [x1a, y1a] = xy(lonStart, r2);
+        const [x1b, y1b] = xy(lonEnd, r2);
+        const [x2a, y2a] = xy(lonEnd, r1);
+        const [x2b, y2b] = xy(lonStart, r1);
+        const a = Math.abs(lonEnd - lonStart);
+        const large = a > 180 ? 1 : 0;
+        return `<path d="M ${x1a} ${y1a} A ${r2} ${r2} 0 ${large} 0 ${x1b} ${y1b} L ${x2a} ${y2a} A ${r1} ${r1} 0 ${large} 1 ${x2b} ${y2b} Z" fill="${fill}" stroke="${stroke}" stroke-width="0.5"/>`;
+    };
+    const elemColor = ['fire','earth','air','water','fire','earth','air','water','fire','earth','air','water'];
+    const elemFill = { fire:'rgba(127,29,29,0.35)', earth:'rgba(20,83,45,0.35)', air:'rgba(113,63,18,0.35)', water:'rgba(30,58,138,0.35)' };
+    let s = `<svg class="chart-wheel" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+    s += `<defs><filter id="glow"><feGaussianBlur stdDeviation="2"/></filter></defs>`;
+    s += `<circle cx="${cx}" cy="${cy}" r="${R_OUT}" fill="rgba(10,10,42,0.5)" stroke="rgba(251,191,36,0.5)" stroke-width="1.2"/>`;
+    for (let i = 0; i < 12; i++) {
+        const lonStart = i * 30, lonEnd = (i + 1) * 30;
+        s += arc(R_SIGN_IN, R_OUT, lonStart, lonEnd, elemFill[elemColor[i]], 'rgba(167,139,250,0.4)');
+        const [gx, gy] = xy(lonStart + 15, (R_OUT + R_SIGN_IN) / 2);
+        s += `<text x="${gx}" y="${gy + 7}" text-anchor="middle" fill="#fde047" font-size="20" font-family="serif">${SIGN_GLYPHS[i]}</text>`;
+        const [lx, ly] = xy(lonStart, R_OUT);
+        const [lx2, ly2] = xy(lonStart, R_SIGN_IN);
+        s += `<line x1="${lx}" y1="${ly}" x2="${lx2}" y2="${ly2}" stroke="rgba(167,139,250,0.5)" stroke-width="0.6"/>`;
+    }
+    s += `<circle cx="${cx}" cy="${cy}" r="${R_SIGN_IN}" fill="none" stroke="rgba(167,139,250,0.5)" stroke-width="0.8"/>`;
+    s += `<circle cx="${cx}" cy="${cy}" r="${R_HOUSE_IN}" fill="none" stroke="rgba(167,139,250,0.4)" stroke-width="0.8"/>`;
+    for (let h = 0; h < 12; h++) {
+        const houseStartLon = (ascSignIdx + h) * 30;
+        const [hx, hy] = xy(houseStartLon, R_SIGN_IN);
+        const [hx2, hy2] = xy(houseStartLon, R_HOUSE_IN);
+        s += `<line x1="${hx}" y1="${hy}" x2="${hx2}" y2="${hy2}" stroke="rgba(251,191,36,0.5)" stroke-width="0.8"/>`;
+        const [tx, ty] = xy(houseStartLon + 15, (R_SIGN_IN + R_HOUSE_IN) / 2);
+        s += `<text x="${tx}" y="${ty + 4}" text-anchor="middle" fill="#c4b5fd" font-size="11" font-family="system-ui">${h + 1}</text>`;
+    }
+    const angles = [
+        { lon: placements.ASC, label: 'ASC', color: '#fbbf24' },
+        { lon: placements.MC,  label: 'MC',  color: '#fbbf24' },
+        { lon: mod360(placements.ASC + 180), label: 'DC', color: 'rgba(251,191,36,0.5)' },
+        { lon: mod360(placements.MC + 180),  label: 'IC', color: 'rgba(251,191,36,0.5)' }
+    ];
+    angles.forEach(a => {
+        const [x1, y1] = xy(a.lon, R_HOUSE_IN);
+        const [x2, y2] = xy(a.lon, 0);
+        s += `<line x1="${x1}" y1="${y1}" x2="${cx}" y2="${cy}" stroke="${a.color}" stroke-width="1" stroke-dasharray="${a.label === 'ASC' || a.label === 'MC' ? '0' : '3,3'}"/>`;
+        const [lx, ly] = xy(a.lon, R_OUT + 10);
+        s += `<text x="${lx}" y="${ly + 4}" text-anchor="middle" fill="${a.color}" font-size="10" font-family="system-ui" font-weight="700">${a.label}</text>`;
+    });
+    const planetItems = PLANET_ORDER.map(p => ({ name: p, lon: placements[p], retro: retro[p] }));
+    planetItems.sort((a, b) => mod360(a.lon - asc) - mod360(b.lon - asc));
+    const placed = [];
+    for (const pl of planetItems) {
+        let r = R_INNER;
+        for (const q of placed) {
+            let d = Math.abs(pl.lon - q.lon);
+            if (d > 180) d = 360 - d;
+            if (d < 8 && Math.abs(q.r - r) < 16) r = q.r - 18;
+        }
+        if (r < R_ASPECT + 8) r = R_INNER;
+        placed.push({ ...pl, r });
+    }
+    for (let i = 0; i < placed.length; i++) {
+        for (let j = i + 1; j < placed.length; j++) {
+            const a = detectAspect(placed[i].lon, placed[j].lon);
+            if (!a) continue;
+            const [x1, y1] = xy(placed[i].lon, R_ASPECT);
+            const [x2, y2] = xy(placed[j].lon, R_ASPECT);
+            const col = a.type === 'harmonic' ? 'rgba(110,231,183,0.45)' : a.type === 'tense' ? 'rgba(248,113,113,0.45)' : 'rgba(253,224,71,0.45)';
+            const dash = a.type === 'tense' ? '4,3' : '0';
+            s += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="1" stroke-dasharray="${dash}"/>`;
+        }
+    }
+    for (const pl of placed) {
+        const [px, py] = xy(pl.lon, pl.r);
+        const [tx, ty] = xy(pl.lon, pl.r - 16);
+        s += `<text x="${px}" y="${py + 7}" text-anchor="middle" fill="#fde047" font-size="20" font-family="serif">${PLANET_GLYPHS[pl.name]}</text>`;
+        s += `<text x="${tx}" y="${ty + 3}" text-anchor="middle" fill="#fbbf24" font-size="9" font-family="system-ui">${Math.floor(degInSign(pl.lon))}°${pl.retro ? '<tspan fill=\"#f87171\"> ℞</tspan>' : ''}</text>`;
+    }
+    s += `<circle cx="${cx}" cy="${cy}" r="${R_ASPECT}" fill="none" stroke="rgba(167,139,250,0.25)" stroke-width="0.6"/>`;
+    s += `</svg>`;
+    return s;
+}
+
+// ───── Reading generator ─────
+function chPlanetName(p) {
+    const obj = PLANETS.find(x => x.en === p);
+    return obj ? L(obj.n) : p;
+}
+
+function renderChartOutput(chart, meta) {
+    const dict = I18N_UI[curLang] || I18N_UI.ja;
+    const out = document.getElementById('chart-output');
+    const { placements, retro, houses, ascSignIdx } = chart;
+    let html = '';
+    html += `<div class="chart-wheel-wrap">${svgChartWheel(chart)}<div class="chart-meta">${meta}</div></div>`;
+    const sunSign = SIGNS[signOfLong(placements.Sun)];
+    const moonSign = SIGNS[signOfLong(placements.Moon)];
+    const ascSign = SIGNS[ascSignIdx];
+    html += `<div class="chart-summary">`;
+    html += `<div class="csum-card" data-jump-sign="${L(sunSign.n)}" data-el="${sunSign.el}"><div class="csum-label">${dict.chSun}</div><div class="csum-glyph">${sunSign.gly}</div><div class="csum-name">${L(sunSign.n)}</div><div class="csum-deg">${formatDeg(placements.Sun)}</div></div>`;
+    html += `<div class="csum-card" data-jump-sign="${L(moonSign.n)}" data-el="${moonSign.el}"><div class="csum-label">${dict.chMoon}</div><div class="csum-glyph">${moonSign.gly}</div><div class="csum-name">${L(moonSign.n)}</div><div class="csum-deg">${formatDeg(placements.Moon)}</div></div>`;
+    html += `<div class="csum-card" data-jump-sign="${L(ascSign.n)}" data-el="${ascSign.el}"><div class="csum-label">${dict.chAsc}</div><div class="csum-glyph">${ascSign.gly}</div><div class="csum-name">${L(ascSign.n)}</div><div class="csum-deg">${formatDeg(placements.ASC)}</div></div>`;
+    html += `</div>`;
+    html += `<div class="howto"><div class="howto-title">${dict.chHowToTitle}</div>`;
+    dict.chHowTo.forEach(step => { html += `<div class="howto-step">${step}</div>`; });
+    html += `</div>`;
+    html += `<div class="placement-list"><div class="section-h">${dict.chPlanets}</div>`;
+    for (const p of PLANET_ORDER) {
+        const lon = placements[p];
+        const sIdx = signOfLong(lon);
+        const sign = SIGNS[sIdx];
+        const h = houses[p];
+        const planetObj = PLANETS.find(x => x.en === p);
+        const rx = retro[p] ? `<span style="color:#f87171;font-family:system-ui;font-size:10px"> ℞ ${dict.chRetro}</span>` : '';
+        html += `<div class="placement-row" data-jump-planet="${p}">`;
+        html += `<div class="pl-glyph">${PLANET_GLYPHS[p]}</div>`;
+        html += `<div class="pl-text"><div class="nm">${chPlanetName(p)} <span style="color:#c4b5fd">${sign.gly} ${L(sign.n)}</span>${rx}</div><div class="pos">${h}${dict.chHouseSuffix} · ${L(HOUSES[h-1].nm)}</div></div>`;
+        html += `<div class="pl-deg">${formatDeg(lon)}<br/><span style="color:#8b85a4">${L(sign.mo === '活動宮' ? {j:'活',e:'C'} : sign.mo === '不動宮' ? {j:'不',e:'F'} : {j:'柔',e:'M'})}/${dict.elem[sign.el].slice(2)}</span></div>`;
+        html += `</div>`;
+    }
+    html += `<div class="placement-row" data-jump-sign="${L(ascSign.n)}"><div class="pl-glyph" style="color:#fbbf24">${ascSign.gly}</div><div class="pl-text"><div class="nm">${dict.chAscFull} (ASC) <span style="color:#c4b5fd">${L(ascSign.n)}</span></div><div class="pos">1${dict.chHouseSuffix}</div></div><div class="pl-deg">${formatDeg(placements.ASC)}</div></div>`;
+    const mcSign = SIGNS[signOfLong(placements.MC)];
+    html += `<div class="placement-row" data-jump-sign="${L(mcSign.n)}"><div class="pl-glyph" style="color:#fbbf24">${mcSign.gly}</div><div class="pl-text"><div class="nm">${dict.chMCFull} (MC) <span style="color:#c4b5fd">${L(mcSign.n)}</span></div><div class="pos">${houses.MC}${dict.chHouseSuffix}</div></div><div class="pl-deg">${formatDeg(placements.MC)}</div></div>`;
+    html += `</div>`;
+    const aspects = [];
+    for (let i = 0; i < PLANET_ORDER.length; i++) {
+        for (let j = i + 1; j < PLANET_ORDER.length; j++) {
+            const a = detectAspect(placements[PLANET_ORDER[i]], placements[PLANET_ORDER[j]]);
+            if (a) aspects.push({ p1: PLANET_ORDER[i], p2: PLANET_ORDER[j], ...a });
+        }
+    }
+    aspects.sort((a, b) => a.orb - b.orb);
+    if (aspects.length) {
+        html += `<div class="aspect-list"><div class="section-h">${dict.chAspects}</div>`;
+        for (const a of aspects.slice(0, 24)) {
+            const aspObj = ASPECTS[a.idx];
+            html += `<div class="aspect-row" data-as="${a.type}" data-jump-aspect="${a.idx}"><div class="as-line">${PLANET_GLYPHS[a.p1]} ${a.gly} ${PLANET_GLYPHS[a.p2]}</div><div class="as-text">${chPlanetName(a.p1)} <span style="color:#c4b5fd">${L(aspObj.n).split('(')[0]}</span> ${chPlanetName(a.p2)}</div><div class="as-orb">${a.orb.toFixed(1)}°</div></div>`;
+        }
+        html += `</div>`;
+    }
+    const elemCount = { fire: 0, earth: 0, air: 0, water: 0 };
+    const modeCount = { '活動宮': 0, '不動宮': 0, '柔軟宮': 0 };
+    for (const p of PLANET_ORDER) {
+        const sign = SIGNS[signOfLong(placements[p])];
+        elemCount[sign.el]++;
+        modeCount[sign.mo]++;
+    }
+    const total = PLANET_ORDER.length;
+    html += `<div class="balance"><div class="section-h">${dict.chBalance}</div><div class="balance-bars">`;
+    for (const k of ['fire','earth','air','water']) {
+        const pct = (elemCount[k] / total * 100).toFixed(0);
+        html += `<div class="balance-row ${k}"><div class="b-label">${dict.elem[k]}</div><div class="b-bar"><div class="b-fill" style="width:${pct}%"></div></div><div class="b-count">${elemCount[k]}</div></div>`;
+    }
+    for (const k of ['活動宮','不動宮','柔軟宮']) {
+        const modeKey = k === '活動宮' ? 'cardinal' : k === '不動宮' ? 'fixed' : 'mutable';
+        const pct = (modeCount[k] / total * 100).toFixed(0);
+        html += `<div class="balance-row"><div class="b-label">${dict.mode[modeKey]}</div><div class="b-bar"><div class="b-fill" style="width:${pct}%"></div></div><div class="b-count">${modeCount[k]}</div></div>`;
+    }
+    html += `</div></div>`;
+    html += `<div class="reading-list"><div class="section-h">${dict.chReading}</div>`;
+    const tpl = dict.chReadingTpl;
+    const fillTpl = (s, v) => Object.entries(v).reduce((acc, [k, val]) => acc.split('{' + k + '}').join(val), s);
+    const ascSubst = {
+        sign: L(ascSign.n),
+        signKw: L(ascSign.kw).slice(0, 3).join('・'),
+        signGen: L(ascSign.gen)
+    };
+    html += `<div class="reading-block gold"><div class="reading-head">${PLANET_GLYPHS.Sun} ${dict.chSun} · ${L(SIGNS[signOfLong(placements.Sun)].n)} <span class="pos">${houses.Sun}${dict.chHouseSuffix}</span></div><div class="reading-body">${fillTpl(tpl.sun, { sign: L(SIGNS[signOfLong(placements.Sun)].n), house: houses.Sun, signKw: L(SIGNS[signOfLong(placements.Sun)].kw).slice(0,3).join('・'), houseTopic: L(HOUSES[houses.Sun-1].nm), signGen: L(SIGNS[signOfLong(placements.Sun)].gen) })}</div></div>`;
+    html += `<div class="reading-block gold"><div class="reading-head">${PLANET_GLYPHS.Moon} ${dict.chMoon} · ${L(SIGNS[signOfLong(placements.Moon)].n)} <span class="pos">${houses.Moon}${dict.chHouseSuffix}</span></div><div class="reading-body">${fillTpl(tpl.moon, { sign: L(SIGNS[signOfLong(placements.Moon)].n), house: houses.Moon, signKw: L(SIGNS[signOfLong(placements.Moon)].kw).slice(0,3).join('・'), houseTopic: L(HOUSES[houses.Moon-1].nm), signGen: L(SIGNS[signOfLong(placements.Moon)].gen) })}</div></div>`;
+    html += `<div class="reading-block gold"><div class="reading-head">⊕ ${dict.chAscFull} · ${L(ascSign.n)}</div><div class="reading-body">${fillTpl(tpl.asc, ascSubst)}</div></div>`;
+    const mcSubst = {
+        sign: L(mcSign.n),
+        signKw: L(mcSign.kw).slice(0, 3).join('・'),
+        signGen: L(mcSign.gen)
+    };
+    html += `<div class="reading-block"><div class="reading-head">⊥ ${dict.chMCFull} · ${L(mcSign.n)}</div><div class="reading-body">${fillTpl(tpl.mc, mcSubst)}</div></div>`;
+    for (const p of ['Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto']) {
+        const sign = SIGNS[signOfLong(placements[p])];
+        const planetObj = PLANETS.find(x => x.en === p);
+        const houseObj = HOUSES[houses[p] - 1];
+        const sub = {
+            planet: chPlanetName(p),
+            sign: L(sign.n),
+            house: houses[p],
+            signKw: L(sign.kw).slice(0, 3).join('・'),
+            houseTopic: L(houseObj.nm),
+            signGen: L(sign.gen),
+            planetKw: L(planetObj.kw).slice(0, 3).join('・'),
+            planetGen: L(planetObj.gen),
+            retro: retro[p] ? ` ${dict.chRetro}` : ''
+        };
+        html += `<div class="reading-block"><div class="reading-head">${PLANET_GLYPHS[p]} ${chPlanetName(p)} · ${L(sign.n)} <span class="pos">${houses[p]}${dict.chHouseSuffix}</span></div><div class="reading-body">${fillTpl(tpl.planet, sub)}</div></div>`;
+    }
+    html += `</div>`;
+    if (aspects.length) {
+        html += `<div class="reading-list"><div class="section-h">${dict.chAspects} — ${dict.sec.aInterp.replace('▼ ','')}</div>`;
+        for (const a of aspects.slice(0, 8)) {
+            const aspObj = ASPECTS[a.idx];
+            const sub = {
+                p1: chPlanetName(a.p1),
+                p2: chPlanetName(a.p2),
+                aspectGly: a.gly,
+                orb: a.orb.toFixed(1),
+                aspectGen: L(aspObj.gen)
+            };
+            html += `<div class="reading-block"><div class="reading-body">${fillTpl(dict.chAspectTpl, sub)}</div></div>`;
+        }
+        html += `</div>`;
+    }
+    html += `<div class="muted-note">${dict.chDisclaimer}</div>`;
+    out.innerHTML = html;
+    out.querySelectorAll('[data-jump-sign]').forEach(el => el.addEventListener('click', () => {
+        const sign = SIGNS.find(s => L(s.n) === el.dataset.jumpSign);
+        if (sign) openModal(sign);
+    }));
+    out.querySelectorAll('[data-jump-planet]').forEach(el => el.addEventListener('click', () => {
+        const planet = PLANETS.find(p => p.en === el.dataset.jumpPlanet);
+        if (planet) openModal(planet);
+    }));
+    out.querySelectorAll('[data-jump-aspect]').forEach(el => el.addEventListener('click', () => {
+        const asp = ASPECTS[+el.dataset.jumpAspect];
+        if (asp) openModal(asp);
+    }));
+}
+
+const SIGN_GLYPHS = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+
+let lastChartInput = null;
+
+function populateChartForm() {
+    const dict = I18N_UI[curLang] || I18N_UI.ja;
+    const cityIdx = curLang === 'en' ? 1 : 0;
+    const cs = document.getElementById('cf-city');
+    const tzs = document.getElementById('cf-tz');
+    const prevCity = cs.value, prevTz = tzs.value;
+    cs.innerHTML = CITIES.map((c, i) => `<option value="${i}">${c[cityIdx]}</option>`).join('') + `<option value="-1">${dict.cfCustom}</option>`;
+    tzs.innerHTML = TZ_LIST.map((t, i) => `<option value="${t[0]}">${t[curLang === 'en' ? 2 : 1]}</option>`).join('');
+    if (prevCity) cs.value = prevCity;
+    if (prevTz) tzs.value = prevTz;
+}
+
+populateChartForm();
+
+function calculateChart() {
+    const dict = I18N_UI[curLang] || I18N_UI.ja;
+    const dateV = document.getElementById('cf-date').value;
+    const timeV = document.getElementById('cf-time').value || '12:00';
+    const lat = parseFloat(document.getElementById('cf-lat').value);
+    const lon = parseFloat(document.getElementById('cf-lon').value);
+    const tz = document.getElementById('cf-tz').value;
+    const out = document.getElementById('chart-output');
+    if (!dateV || isNaN(lat) || isNaN(lon) || !tz) {
+        out.innerHTML = `<div class="error-msg">${dict.errBadInput}</div>`;
+        return;
+    }
+    const [yy, mm, dd] = dateV.split('-').map(Number);
+    const [hh, mi] = timeV.split(':').map(Number);
+    if (!yy || !mm || !dd || yy < 1800 || yy > 2200) {
+        out.innerHTML = `<div class="error-msg">${dict.errBadInput}</div>`;
+        return;
+    }
+    try {
+        const chart = computeChart(yy, mm, dd, hh, mi || 0, lat, lon, tz);
+        const meta = `${yy}-${String(mm).padStart(2,'0')}-${String(dd).padStart(2,'0')} ${String(hh).padStart(2,'0')}:${String(mi||0).padStart(2,'0')} (${tz}) · ${lat.toFixed(2)}°, ${lon.toFixed(2)}°`;
+        renderChartOutput(chart, meta);
+        lastChartInput = { yy, mm, dd, hh, mi: mi || 0, lat, lon, tz, meta };
+        try { localStorage.setItem('pl-chart', JSON.stringify(lastChartInput)); } catch {}
+    } catch (e) {
+        out.innerHTML = `<div class="error-msg">${dict.errBadInput}<br/><span style="opacity:0.6;font-size:11px">${e.message}</span></div>`;
+    }
+}
+
+function rerenderChartIfPresent() {
+    if (!lastChartInput) return;
+    const { yy, mm, dd, hh, mi, lat, lon, tz, meta } = lastChartInput;
+    try {
+        const chart = computeChart(yy, mm, dd, hh, mi, lat, lon, tz);
+        renderChartOutput(chart, meta);
+    } catch {}
+}
+
+document.getElementById('cf-city').addEventListener('change', (e) => {
+    const idx = +e.target.value;
+    if (idx < 0) return;
+    const c = CITIES[idx];
+    document.getElementById('cf-lat').value = c[2];
+    document.getElementById('cf-lon').value = c[3];
+    document.getElementById('cf-tz').value = c[4];
+});
+['cf-lat','cf-lon'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+        const cs = document.getElementById('cf-city');
+        cs.value = '-1';
+    });
+});
+document.getElementById('cf-calc').addEventListener('click', calculateChart);
+
+try {
+    const saved = localStorage.getItem('pl-chart');
+    if (saved) {
+        const o = JSON.parse(saved);
+        if (o && o.yy) {
+            document.getElementById('cf-date').value = `${o.yy}-${String(o.mm).padStart(2,'0')}-${String(o.dd).padStart(2,'0')}`;
+            document.getElementById('cf-time').value = `${String(o.hh).padStart(2,'0')}:${String(o.mi).padStart(2,'0')}`;
+            document.getElementById('cf-lat').value = o.lat;
+            document.getElementById('cf-lon').value = o.lon;
+            document.getElementById('cf-tz').value = o.tz;
+            const cityMatch = CITIES.findIndex(c => Math.abs(c[2] - o.lat) < 0.01 && Math.abs(c[3] - o.lon) < 0.01 && c[4] === o.tz);
+            document.getElementById('cf-city').value = cityMatch >= 0 ? cityMatch : -1;
+            lastChartInput = o;
+        }
+    }
+} catch {}
+
+const _dateEl = document.getElementById('cf-date');
+if (!_dateEl.value) {
+    const _t = new Date();
+    _dateEl.value = `${_t.getFullYear()}-${String(_t.getMonth()+1).padStart(2,'0')}-${String(_t.getDate()).padStart(2,'0')}`;
 }
 
 let initLang;
